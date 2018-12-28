@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>LZH website</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1><b>ZhangHui</b> Li</h1>
+      <p>CPU designer, Lisper, Smalltalker & Emacs maniac.</p>
+
+      <div class="navbar navbar-inverse">
+        <ul class="nav nav-pills">
+          <li><a href='/'>Home</a></li>
+          <li><a href='/z_frontPage/index.html'>frontBlog</a></li>
+          <li><a href='/z_todo/index.html'>Todo</a></li>
+          <li><a href='/z_org/lizhhui.html'>Doc</a></li>
+          <li><a href='/z_pic/index.html'>Photo</a></li>
+          <li><a href='/resume.html'>Contact</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div id="content">
+	    <h1> blog </h1>
+            <ul class="org-ul">
+              {% for name in posts_key %}
+              <li><a href= "z_frontPage/{{name[1]}}.html ">
+                  {{name[0]}} {{name[1]}}
+              </a></li>
+              {% endfor %}
+            </ul>
+          </div>
+	  <div class="form-group">
+            <form class="form-signin" method="post" id="text_form">
+	      <label for="name">文本框</label>
+	      <textarea class="form-control" rows="8" name="nnn" autofocus>{{textcontent}}</textarea>
+              <input type="password" name="passtext" class="navbar-form navbar-right" value="c" placeholder="Password">
+              <button class="btn btn-success" type="submit" id="submit-text">OK</button>
+            </form>
+	  </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well"><p id="sv_p"> Working ...  </p></div>
+          <div class="well"><p id="ws_p"> Working ...  </p></div>
+          <form class="form-signin" method="post" id="xx_form">
+            <input type="text" name="username" class="form-control" placeholder="email-phone-name">
+            <input type="password" name="pass" class="form-control" placeholder="Password">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+	<p class="text-muted">Copyright@LZH 2018.</p>
+      </div>
+    </footer>
+
+    <!-- customize js -->
+    <script src="/static/js/lzh.js"></script> 
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
