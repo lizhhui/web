@@ -34,7 +34,7 @@ def index():
   back_from_browser(RECORD_BACK);
   return "server received memo~"
  else:
-  name = 'xxxx'
+  name = 'xxx'
   return render_template('index.html', 
                          posts_key =gen_blog(BLOG_INDEX),
                          textcontent="",
@@ -74,7 +74,8 @@ def info(dest):
    msg = msg.decode('utf-8')
    return msg
   elif(dest=="sv") :
-   output =os.popen('cd '+USERDIR+'; git status')
+   #output =os.popen('cd '+USERDIR+'; git status')
+   output=os.popen(CAP_PL)
    msg1 = output.read()
    return msg1
 

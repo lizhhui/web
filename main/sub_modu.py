@@ -68,7 +68,7 @@ def proc_req_pass():
             resu= output.read()
             resu= re.sub("\n","",resu)
             resu= re.sub(".*:","",resu)
-            resu= re.sub("----.*","",resu)
+            resu= re.sub("\*\*\*\*.*","",resu)
             return resu
             #return "search "
     else: 
@@ -115,7 +115,7 @@ def proc_to_rem_file(to_rem_file) :
         grp_tmp=[]
         out_array=[]
         for kk in  f.read().decode('utf-8').split("\n"):
-            kk_match= re.match(r'----(.*)',kk)
+            kk_match= re.match(r'\*\*\*\*(.*)',kk)
             if(kk_match):
                 last_head =head
                 last_time =time
