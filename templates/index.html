@@ -19,8 +19,8 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h1><b>xx</b> X</h1>
-      <p>CPU designer, Lisper, Smalltalker & Emacs maniac.</p>
+      <h1><b>chris</b> Li</h1>
+      <p>Digital design, Lisper,Emacs.</p>
 
       <div class="navbar navbar-inverse">
         <ul class="nav nav-pills">
@@ -95,8 +95,19 @@
 	      </div>
 	      -->
 
+        </div>
+
+        <div class="col-sm-4">
+
+
+          <div ><h1> Todo </h1>
+	    {% for kk in todo_item %}
+	    <li> {{kk[1]}} </li>
+	    {% endfor %}
+	  </div>
+
           <div id="content">
-	    <h1> blog </h1>
+	    <h1> Blog </h1>
             <ul class="org-ul">
               {% for name in posts_key %}
               <li><a href= "z_frontPage/{{name[1]}}.html ">
@@ -105,25 +116,15 @@
               {% endfor %}
             </ul>
           </div>
-        </div>
 
-        <div class="col-sm-4">
-
-
-          <div class="well"><h1> Todo </h1>
-	    {% for kk in todo_item %}
-	    <li> {{kk[1]}} </li>
-	    {% endfor %}
-	  </div>
-
-          <div class="well"><p id="sv_p"> Working ...  </p></div>
           <div class="well"><p id="ws_p"> Working ...  </p></div>
-
           <form class="form-signin" method="post" id="xx_form">
             <input type="text" name="username" class="form-control" placeholder="email-phone-name">
             <input type="password" name="pass" class="form-control" placeholder="Password">
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
           </form>
+          <div class="well"><p id="sv_p"> Working ...  </p></div>
+
         </div>
       </div>
     </div>
