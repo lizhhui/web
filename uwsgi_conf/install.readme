@@ -1,0 +1,2 @@
+sudo pip install uwsgi
+sudo apt-get install uwsgi-plugin-python
