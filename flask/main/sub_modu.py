@@ -10,6 +10,8 @@ from vars_common import *
 
 
 def gen_blog(blog_index_path):
+ posts_key=[]
+ if(os.path.exists(blog_index_path)):
     with open(blog_index_path) as fp:
         str = fp.read()
         str = re.sub("\n"," ",str)
@@ -18,12 +20,11 @@ def gen_blog(blog_index_path):
         str = re.sub("</a>","*",str)
         str = re.sub("<.*?>","",str).decode('utf-8')
         lll = str.split('*')
-        posts_key=[]
     for kk in lll :
         kk_match=re.match(r' *(\d{4}-\d{2}-\d{2}) (.*)',kk)
         if(kk_match):
             posts_key.append([kk_match.group(1),kk_match.group(2)])
-    return posts_key
+ return posts_key
 
 
 #----------------------------
