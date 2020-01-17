@@ -1,6 +1,7 @@
 
-#!/usr/bin/python
-# _*_ coding:utf-8 _*_
+#############################################
+#  DEPENDANCE
+#############################################
 from flask import Flask
 from flask import render_template
 from flask import request        
@@ -18,8 +19,10 @@ import time
 from sub_modu import *
 from vars_common import *
 
-
+#############################################
+# >>> root
 @app.route('/' , methods=["GET","POST"])
+#############################################
 def index():
  req_cmd = proc_req();
  everyday_file = Z_BLOG+time.strftime("%y-%m-%d")+".org"
@@ -43,26 +46,41 @@ def index():
                          cap_item = cap_item,
                          re_passwd=name)
 
+#############################################
+# >>> z_blog
 @app.route('/z_blog/<html_name>')
+#############################################
 def blog(html_name):
  #return "z_blog/{}".format(html_name)
  return app.send_static_file("z_blog/%s"%html_name.encode('utf-8'))
 #return send_from_directory('/static',web.html)
 
+#############################################
+# >>> z_todo
 @app.route('/z_todo/<html_name>')
+#############################################
 def todo(html_name):
  return app.send_static_file("z_todo/%s"%html_name.encode('utf-8'))
 
 
+#############################################
+# >>> z_frontPage
 @app.route('/z_frontPage/<html_name>')
+#############################################
 def frontPage(html_name):
  return app.send_static_file("z_frontPage/%s"%html_name.encode('utf-8'))
 
+#############################################
+# >>> z_org
 @app.route('/z_org/<html_name>')
+#############################################
 def org(html_name):
  return app.send_static_file("z_org/%s"%html_name.encode('utf-8'))
 
+#############################################
+# >>> req_data
 @app.route('/req_data/<dest>',methods=["GET"])
+#############################################
 def info(dest):
  if request.method=='GET':
   if(dest=="ws") :

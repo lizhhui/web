@@ -1,2 +1,26 @@
-sudo pip install uwsgi
+##############################
+# uwsgi 2.0.12
+##############################
+1. uwsgi in DEFULT satitution is installed after debian OS be installed.
+2. uwsgi  2.0.12 (os default version ) must specify --plugin=python
+##############################
+# uwsgi 2.0.18
+##############################
+3. uwsgi tgz can installed with python2/3,while "apt-get install uwsgi"
+conban to python3.
+
+>>>>>>>>>>>>>>>>>>>>>>>>
+>>so default version is most easily way to run.above all you also must 
+install package below:
+
 sudo apt-get install uwsgi-plugin-python
+
+##############################
+# python3 
+##############################
+#sudo pip3 install uwsgi
+#sudo pip3 install flask
+#sudo pip3 install paramiko
+#sudo pip3 install pexpect
+
+##############################
