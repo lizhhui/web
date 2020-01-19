@@ -4,7 +4,7 @@ import os
 USERDIR = "/home/fixer/lzh/"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) 
 APP_STATIC_TXT = os.path.join(APP_ROOT, 'static/txt')
-BLOG_INDEX = os.path.join(APP_ROOT,"static/z_frontPage/index.html")
+BLOG_INDEX = os.path.join(APP_ROOT,"static/html/z_blog/index.html")
 EMACAS_PUBLISH = USERDIR+'Emacs/emacs_publish.expect'
 CAP_PL = 'cd capture ; ./capture_sort.pl input/capture.org'
 Z_BLOG = USERDIR+"emacs/capture/everyday/"

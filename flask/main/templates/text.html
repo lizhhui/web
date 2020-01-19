@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>LZH website</title>
+    <title>recording </title>
 
     <style type="text/css">
       <!--/*--><![CDATA[/*><!--*/
@@ -93,63 +93,22 @@
     <link href="/static/z_css/navbar-fixed-top.css" rel="stylesheet">
   </head>
   <body>
-    
+
+
     {% include 'header.html' %}
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1>生活因为仰承</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-      </div>
-
-      <div class="row">
-
-	<div class="col-sm-8">
-          <div id="capture">
-	    <ul class="timeline">
-	      {% for kk in cap_item %}
-	      <li class="timeline-inverted">
-		<!--<div class="tl-circ"></div> -->
-		<div class="timeline-panel">
-		  <div class="tl-heading">
-		    <h4>{{kk[1]}}</h4>
-		    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{kk[0]}}</small></p>
-		  </div>
-		  <div class="tl-body">
-		    <p>{{kk[2]|safe}}</p>
-		  </div>
-		</div>
-	      </li>
-	      {% endfor %}
-	    </ul>
+      <div class="container">
+	  <div class="form-group">
+            <form class="form-signin" method="post" id="text_form">
+	      <label for="name">标题</label>
+	      <textarea class="form-control" rows="1" name="nnn" > </textarea>
+	      <label for="name">内容</label>
+	      <textarea class="form-control" rows="8" name="nnn" > </textarea>
+	      <button class="btn btn-success" type="submit" id="submit-text">OK</button>
+            </form>
 	  </div>
-	</div>
-
-	<div class="col-sm-4">
-	  <div id="preamble" class="status">
-	    <h1><b>Chris</b> Li</h1>
-	    <p>Digital design, Lisper,Emacs. </p>       
-	    <p>                            . </p> 
-	    <p>                            . </p> 
-	    <p>                            . </p> </div>
-          <div class="panel panel-danger"><div class="panel-heading"> todo </div>
-	    {% for kk in todo_item %}
-	    <div class="panel-body"> {{kk[1]}} </div>
-	    {% endfor %} </div>
-          <div id="content" class="panel panel-primary" >
-	    <div class="panel-heading"> 最新文章 </div>
-            <ul class="org-ul">
-	      {% for name in posts_key %}
-	      <li><a href= "z_blog/{{name[1]}}.html ">
-                  {{name[0]}} {{name[1]}}
-	      </a></li>
-	      {% endfor %}
-            </ul> </div>
-	  
-	</div>
-
       </div>
-    </div>
+
 
     <footer class="footer">
       <div class="container">
@@ -159,6 +118,7 @@
 
     <!-- customize js -->
     <script src="/static/js/lzh.js"></script> 
+
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->

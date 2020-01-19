@@ -45,22 +45,42 @@ def index():
                          todo_item=todo_item,
                          cap_item = cap_item,
                          re_passwd=name)
+#############################################
+# >>> check
+@app.route('/check/')
+#############################################
+def check():
+ memo_item = proc_to_rem_file(REM_FILE)
+ return render_template('check.html',memo_item=memo_item)
 
+
+#############################################
+# >>> record
+@app.route('/record/')
+#############################################
+def record():
+  return render_template('rec.html',textcontent="")
+
+#############################################
+# >>> text
+@app.route('/text/')
+#############################################
+def text():
+  return render_template('text.html',textcontent="")
 #############################################
 # >>> z_blog
 @app.route('/z_blog/<html_name>')
 #############################################
 def blog(html_name):
- #return "z_blog/{}".format(html_name)
- return app.send_static_file("z_blog/%s"%html_name.encode('utf-8'))
-#return send_from_directory('/static',web.html)
+ return app.send_static_file("html/z_blog/%s"%html_name.encode('utf-8'))
+
 
 #############################################
 # >>> z_todo
 @app.route('/z_todo/<html_name>')
 #############################################
 def todo(html_name):
- return app.send_static_file("z_todo/%s"%html_name.encode('utf-8'))
+ return app.send_static_file("html/z_todo/%s"%html_name.encode('utf-8'))
 
 
 #############################################
@@ -68,14 +88,14 @@ def todo(html_name):
 @app.route('/z_frontPage/<html_name>')
 #############################################
 def frontPage(html_name):
- return app.send_static_file("z_frontPage/%s"%html_name.encode('utf-8'))
+ return app.send_static_file("html/z_frontPage/%s"%html_name.encode('utf-8'))
 
 #############################################
 # >>> z_org
 @app.route('/z_org/<html_name>')
 #############################################
 def org(html_name):
- return app.send_static_file("z_org/%s"%html_name.encode('utf-8'))
+ return app.send_static_file("html/z_org/%s"%html_name.encode('utf-8'))
 
 #############################################
 # >>> req_data
