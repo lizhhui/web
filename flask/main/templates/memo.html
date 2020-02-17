@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>you are doing the right things</title>
+
+    <style type="text/css">
+      <!--/*--><![CDATA[/*><!--*/
+      .title  { text-align: center; }
+      .todo   { font-family: monospace; color: red; }
+      .done   { color: green; }
+      .tag    { background-color: #eee; font-family: monospace;
+		padding: 2px; font-size: 80%; font-weight: normal; }
+      .timestamp { color: #bebebe; }
+      .timestamp-kwd { color: #5f9ea0; }
+      .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+      .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+      .center { margin-left: auto; margin-right: auto; text-align: center; }
+      .underline { text-decoration: underline; }
+      #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+      p.verse { margin-left: 3%; }
+      pre {
+	  border: 1px solid #ccc;
+	  box-shadow: 3px 3px 3px #eee;
+	  padding: 8pt;
+	  font-family: monospace;
+	  overflow: auto;
+	  margin: 1.2em;
+      }
+      pre.src {
+	  position: relative;
+	  overflow: visible;
+	  padding-top: 1.2em;
+      }
+      pre.src:before {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  top: -10px;
+	  right: 10px;
+	  padding: 3px;
+	  border: 1px solid black;
+      }
+      pre.src:hover:before { display: inline;}
+      pre.src-sh:before    { content: 'sh'; }
+      pre.src-bash:before  { content: 'sh'; }
+      pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+      pre.src-R:before     { content: 'R'; }
+      pre.src-perl:before  { content: 'Perl'; }
+      pre.src-java:before  { content: 'Java'; }
+      pre.src-sql:before   { content: 'SQL'; }
+
+      table { border-collapse:collapse; }
+      caption.t-above { caption-side: top; }
+      caption.t-bottom { caption-side: bottom; }
+      td, th { vertical-align:top;  }
+      th.right  { text-align: center;  }
+      th.left   { text-align: center;   }
+      th.center { text-align: center; }
+      td.right  { text-align: right;  }
+      td.left   { text-align: left;   }
+      td.center { text-align: center; }
+      dt { font-weight: bold; }
+      .footpara:nth-child(2) { display: inline; }
+      .footpara { display: block; }
+      .footdef  { margin-bottom: 1em; }
+      .figure { padding: 1em; }
+      .figure p { text-align: center; }
+      .inlinetask {
+	  padding: 10px;
+	  border: 2px solid gray;
+	  margin: 10px;
+	  background: #ffffcc;
+      }
+      #org-div-home-and-up
+      { text-align: right; font-size: 70%; white-space: nowrap; }
+      textarea { overflow-x: auto; }
+      .linenr { font-size: smaller }
+      .code-highlighted { background-color: #ffff00; }
+      .org-info-js_info-navigation { border-style: none; }
+      #org-info-js_console-label
+      { font-size: 10px; font-weight: bold; white-space: nowrap; }
+      .org-info-js_search-highlight
+      { background-color: #ffff00; color: #000000; font-weight: bold; }
+      /*]]>*/-->
+    </style>
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="/static/z_css/timeline.css">
+    <link href="/static/z_css/navbar-fixed-top.css" rel="stylesheet">
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    <div class="container">
+
+      <div class="col-sm-2">
+	<h1> all </h1>
+	  {% for kk in memo_item %}
+	  <p> {{kk[0]}} </p>
+	  {% endfor %}
+      </div>
+      <div class="col-sm-8">
+      <div id="memos">
+	<h1> review </h1>
+	<div class="well" id="memo_div">
+	  {% for kk in memo_item %}
+	  <h4> {{kk[0]}} {{kk[1]}} </h4>
+	  <p> {{kk[2]|safe}}<br> {{kk[0]}} </p>
+	  {% endfor %}
+	</div>
+        <form class="form-signin" method="post" id="form_memo" onsubmit="false">
+	  <button class="btn btn-success" onclick="submit_memo()" type="button" name="ok">OK</button>
+	  <button class="btn btn-success" onclick="show_memo()"   type="button" name="show">Show</button>
+	  <button class="btn btn-success" onclick="fail_memo()"   type="button" name="no">NO</button>
+	  <textarea class="form-control" rows="1" id="memo_chk_sta" name="memo_chk_sta" >empty</textarea>
+        </form>
+      </div>
+      
+
+      <h1> sss </h1>
+      <form class="form-signin" method="post" id="xx_form">
+        <input type="text" name="username" class="form-control" placeholder="email-phone-name">
+        <input type="password" name="pass" class="form-control" placeholder="Password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+      </form>
+
+      <h1> Info board </h1>
+      <div class="well"><p id="ws_p"> Working ...  </p></div>
+      <div class="well"><p id="sv_p"> Working ...  </p></div>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+	<p class="text-muted">Copyright@LZH 2018.</p>
+      </div>
+    </footer>
+
+    <!-- customize js -->
+    <script src="/static/js/lzh.js"></script> 
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

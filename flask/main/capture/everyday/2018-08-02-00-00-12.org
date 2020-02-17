@@ -1,0 +1,4 @@
+** DONE write a perl script process capture.org  
+  SCHEDULED: <2018-08-02 Thu> 
+  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:12]
+  sort capture todo memo

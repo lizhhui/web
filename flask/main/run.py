@@ -1,4 +1,4 @@
-
+# coding=utf-8
 #############################################
 #  DEPENDANCE
 #############################################
@@ -15,6 +15,7 @@ import re
 import os
 import pexpect
 import time
+import numpy as np
 
 from sub_modu import *
 from vars_common import *
@@ -24,49 +25,61 @@ from vars_common import *
 @app.route('/' , methods=["GET","POST"])
 #############################################
 def index():
- req_cmd = proc_req();
- everyday_file = Z_BLOG+time.strftime("%y-%m-%d")+".org"
- memo_item = proc_to_rem_file(REM_FILE)
- todo_item = proc_to_rem_file(TODO_FILE)
- cap_item  = proc_to_rem_file(CAP_FILE)
- if(req_cmd == 1) :
-  return proc_req_pass();
- elif(req_cmd == 2) :
-  return render_template('index.html', textcontent=proc_req_record(everyday_file) )
- elif(req_cmd == 3) :
-  back_from_browser(RECORD_BACK);
-  return "server received memo~"
+ cap_item, todo_item ,memo_item  = category_from_dir(EVERYDAY_DIR)
+ blog_item = get_dir_filelist_and_each_content(BLOG_DIR)
+ all_item = np.concatenate((cap_item , blog_item) ,axis=0)
+ item_num = len(all_item)
+ #split_capture_org()
+ #split_everyday_org()
+ return render_template('index.html',
+                        posts_key =get_dir_filelist(ARTICLE),
+                        item_num = item_num,
+                        todo_item=todo_item,
+                        cap_item = all_item)
+#############################################
+# >>> memo 
+@app.route('/memo/', methods=["GET","POST"])
+#############################################
+def memo():
+ if request.method == 'POST' and request.form.get("memo_chk_sta"):
+  return back_from_browser(RECORD_BACK)
+ else :
+  cap_item, todo_item, memo_item = category_from_dir(EVERYDAY_DIR)
+  return render_template('memo.html',memo_item=memo_item)
+
+
+#############################################
+# >>> capture
+@app.route('/capture/', methods=["GET","POST"])
+#############################################
+def capture():
+ if request.method == 'POST' and request.form.get("passtext"):
+  everyday_file = EVERYDAY_DIR + time.strftime("%y-%m-%d-%H-%M-%S") + ".org"
+  return render_template('capture.html', textcontent=get_dir_filelist_and_each_content(EVERYDAY_DIR), latest_commit_content=proc_req_record(everyday_file))
  else:
-  name = 'xxx'
-  return render_template('index.html', 
-                         posts_key =gen_blog(BLOG_INDEX),
-                         textcontent="",
-                         memo_item=memo_item,
-                         todo_item=todo_item,
-                         cap_item = cap_item,
-                         re_passwd=name)
-#############################################
-# >>> check
-@app.route('/check/')
-#############################################
-def check():
- memo_item = proc_to_rem_file(REM_FILE)
- return render_template('check.html',memo_item=memo_item)
-
+   return render_template('capture.html',textcontent=get_dir_filelist_and_each_content(EVERYDAY_DIR), latest_commit_content= "no commit")
 
 #############################################
-# >>> record
-@app.route('/record/')
+# >>> article
+@app.route('/article/<html_name>', methods=["GET","POST"])
 #############################################
-def record():
-  return render_template('rec.html',textcontent="")
-
-#############################################
-# >>> text
-@app.route('/text/')
-#############################################
-def text():
-  return render_template('text.html',textcontent="")
+def article(html_name):
+ if(html_name != 'index'):
+  filepath = ARTICLE + html_name
+  return render_template('article_show.html', textcontent=get_file_content(filepath),title=get_dir_filelist(ARTICLE))
+ elif request.method == 'POST' :
+  everyday_file = ARTICLE + time.strftime("%y-%m-%d-%H-%M-%S") + request.form.get("text_head")+".org"
+  w_text = request.form.get("text_body").encode('utf-8')
+  print everyday_file
+  # 对于中文文件名，windows默认都是gbk，为了兼容windows下中文标题，统一用gbk编码文件标题。
+  filename = everyday_file.encode('gbk')
+  with open(filename , 'w') as f:
+   f.write(w_text)
+   f.write("\n")
+   f.close()
+  return render_template('article.html', textcontent=get_dir_filelist(ARTICLE))
+ else:
+  return render_template('article.html',textcontent=get_dir_filelist(ARTICLE))
 #############################################
 # >>> z_blog
 @app.route('/z_blog/<html_name>')
@@ -104,18 +117,19 @@ def org(html_name):
 def info(dest):
  if request.method=='GET':
   if(dest=="ws") :
-   ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-   ssh.connect(hostname='10.0.0.2', port=22, username='fixer', password='g')
-   cmd = 'builtin cd lzh ;git st'
-   stdin,stdout,stderr = ssh.exec_command(cmd)
-   msg = stdout.read()
-   msg = msg.decode('utf-8')
-   return msg
+   #ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+   #ssh.connect(hostname='10.0.0.2', port=22, username='fixer', password='g')
+   #cmd = 'builtin cd lzh ;git st'
+   #stdin,stdout,stderr = ssh.exec_command(cmd)
+   #msg = stdout.read()
+   #msg = msg.decode('utf-8')
+   #return msg
+   return "msg"
   elif(dest=="sv") :
    #output =os.popen('cd '+USERDIR+'; git status')
    output=os.popen(CAP_PL)
    msg1 = output.read()
-   return msg1
+   return "msg1"
 
 
 

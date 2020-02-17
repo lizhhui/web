@@ -1,0 +1,3 @@
+** CAP SB软件，人脑填坑 			      :tool:think:lzh_system:
+   <2018-08-02 Thu>
+   有一些软件是真的坑，依lai或用起来坑太多。花费很多保贵的时间去debug。

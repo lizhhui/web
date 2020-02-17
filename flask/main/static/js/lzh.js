@@ -8,10 +8,10 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.timeout = 4000;
 
 
-xmlhttp.onreadystatechange=state_Change;
-xmlhttp.open("GET","/req_data/sv",true);
-xmlhttp.send(null);
-sv.innerText="changed manually"
+//xmlhttp.onreadystatechange=state_Change;
+//xmlhttp.open("GET","/req_data/sv",true);
+//xmlhttp.send(null);
+//sv.innerText="changed manually"
 
 
 function state_Change()
@@ -48,7 +48,16 @@ function state_Change()
     }
 }
 
+sv.innerText="sv execute fail ...";
 
+//==================================
+// memory system function
+//----------------------------------
+// memory curve lin 1-1-1-1-1-1-1-2-2-2-2-3-3-3-10-10-20-30-100-200-300
+
+
+//----------------------------------
+// element
 var pare = document.getElementById('memo_div');
 var submit_area = document.getElementById('memo_chk_sta');
 var memo_form = document.getElementById('form_memo');
@@ -58,15 +67,48 @@ var heads = pare.getElementsByTagName('h4');
 var contents = pare.getElementsByTagName('p');
 var up_h = document.createElement('h4');
 var up_c = document.createElement('p');
+
+//----------------------------------
+// process item below
 var heads_text = [];
-for(var i =0 ; i<heads.length ; i++) {
-    heads_text.push(heads[i].innerText);
-}
 var contents_text = [];
+var tag_text = [];
+//----------------------------------
+
+var ctime=new Date();
+var my_time = ctime.toLocaleDateString();
+//alert(my_time);
+var cur_stage=1;
+var memory_curve=[1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 10, 10, 20, 30, 100, 200, 300];
+
+
+var last_time = "";
+var last_stage = "";
 for(var i =0 ; i<contents.length ; i++) {
-    contents_text.push(contents[i].innerText);
+    var q= contents[i].innerText.match(/\*\*\*\*last_time\*\*\*\*.*\*\*\*\*/);
+    last_time= q[0].replace(/\*\*\*\*stage\*\*\*\*.*/,"");
+    last_time= last_time.replace(/.*\*\*\*\*last_time\*\*\*\*/,"");
+    q= contents[i].innerText.match(/\*\*\*\*stage\*\*\*\*.*\*\*\*\*/);
+    last_stage= q[0].replace(/.*stage\*\*\*\*\.*/,"");
+    last_stage= last_stage.replace(/\*\*\*\*\.*/,"");
+    var tag_date = new Date(last_time);
+    // caculate dates after
+    var during = parseInt((ctime.getTime() - tag_date.getTime())/(1000*24*60*60));
+    if((during >= memory_curve[Number(last_stage)])&&  (Number(last_stage)< memory_curve.length) ) {
+	//cur_stage = Number(last_stage) + 1;
+	//alert(memory_curve[Number(last_stage)]);
+	heads_text.push(heads[i].innerText);
+	contents_text.push(contents[i].innerText);
+	tag_text.push(last_stage);
+    }
+    //last_time= "--"+last_time +"--";
+    //alert(last_stage);
+    //break;
+
 }
     
+//----------------------------------
+// flow
 remove_all_child();
 
 var cur_i =0;
@@ -79,7 +121,8 @@ pare.appendChild(up_c);
 //alert(heads[0].innerText);
 
 
-sv.innerText="sv execute fail ...";
+//----------------------------------
+// botton function
 
 function submit_memo() {
     if(cur_i== heads_text.length-1) {
@@ -171,13 +214,13 @@ function form_submit(){
 	submit_area.append(heads_text[i]);
 	submit_area.rows++;
 	if(exist_fail) {
-	    submit_area.append("   FORGET\n");
+	    submit_area.append("   FORGET ****last_time****"+my_time+"****stage****"+eval(Number(tag_text[i])-1)+"****\n");
 	}else {
-	    submit_area.append("   CHECKED\n");
+	    submit_area.append("   CHECKED ****last_time****"+my_time+"****stage****"+eval(Number(tag_text[i])+1)+"****\n");
 	}
     }
     //memo_form.submit();
     var formData = new FormData(memo_form);
-    xmlhttp.open("POST","/",true);
+    xmlhttp.open("POST","/memo/",true);
     xmlhttp.send(formData);
 }

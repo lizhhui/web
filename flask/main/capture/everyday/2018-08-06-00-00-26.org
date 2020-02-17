@@ -1,0 +1,5 @@
+** CAP perl local global variables 				       :perl:
+   <2018-08-06 Mon>
+   in perl 变量只有两种，不是函数的局部作用域，就是全局作用域。
+   
+   数据格式嵌套，嵌套数组 xxx =[@array],然后用@{xxx}来调用。

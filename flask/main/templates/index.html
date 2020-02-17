@@ -99,12 +99,13 @@
     <div class="container">
       <div class="jumbotron">
         <h1>生活因为仰承</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+        <p class="lead">如果有人能轻易成功，那不是你，你这辈子，心态和理智及信仰是你唯一的依靠。</p>
       </div>
 
       <div class="row">
 
 	<div class="col-sm-8">
+	  <p>总条数: {{item_num}}                    . </p> 
           <div id="capture">
 	    <ul class="timeline">
 	      {% for kk in cap_item %}
@@ -116,7 +117,7 @@
 		    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{kk[0]}}</small></p>
 		  </div>
 		  <div class="tl-body">
-		    <p>{{kk[2]|safe}}</p>
+		    <p>{{kk[2] |safe}}</p>
 		  </div>
 		</div>
 	      </li>
@@ -140,8 +141,8 @@
 	    <div class="panel-heading"> 最新文章 </div>
             <ul class="org-ul">
 	      {% for name in posts_key %}
-	      <li><a href= "z_blog/{{name[1]}}.html ">
-                  {{name[0]}} {{name[1]}}
+	      <li><a href= "article/{{name}}">
+                  {{name}}
 	      </a></li>
 	      {% endfor %}
             </ul> </div>

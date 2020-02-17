@@ -1,0 +1,9 @@
+perl中hash/array的名字为变量 ***3***107
+browser auto refresh after html submit from ***3***107
+javascript DOM operation ***3***107
+python script write down ***3***107
+sub_fun传参,参数逗号要有空格 ***3***107
+perl 遍历文件夹 ***3***107
+create dict/hash in python ***3***107
+javascript new Array new FormData ***3***107
+动态绑定 ***2***106

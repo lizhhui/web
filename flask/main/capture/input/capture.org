@@ -1,0 +1,149 @@
+
+* Tasks
+** DONE flask add memo capture todo 
+  SCHEDULED: <2018-08-02 Thu> 
+  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:12]
+  
+** CANCELED tag add elisp fuction 
+  SCHEDULED: <2018-08-02 Thu> 
+  - State "CANCELED"   from "TODO"       [2018-08-17 Fri 14:15] \\
+    no need to do that ,after set org-tag-list is can be done with C-cC-q easily
+  
+** DONE write a perl script process capture.org  
+  SCHEDULED: <2018-08-02 Thu> 
+  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:12]
+  sort capture todo memo
+** TODO perl grep learning                                            :perl:
+  SCHEDULED: <2018-08-05 Sun> 
+  
+** DONE how flask post know which button submit	    :python:flask:lzh_system:
+  SCHEDULED: <2018-08-06 Mon> 
+  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:14]
+  button is submit with form,so it must use javascript to take over
+  the submit function.
+** CANCELED org edit C-cC-k C-cC-r rebinding to TAB	   :elisp:lzh_system:
+  SCHEDULED: <2018-08-16 Thu> 
+  - State "CANCELED"   from "TODO"       [2018-08-17 Fri 14:14] \\
+    can't do that ,it is two different function
+  
+  [[file:~/lzh/Emacs/org/lizhhui.org::*org%20%E7%9A%84%E7%BC%96%E8%BE%91][org 的编辑]]
+** TODO 寻找一个类似于地图，可缩放，可变化重点的思维记录工具                                                      :lzh_system:
+ SCHEDULED: <2018-08-17 Fri> 
+ 1，这个工具能够把一些树状结构，思维结构画出来。
+2，可以放大很多倍，把很多知识类似于书架式的放于其中。
+* Captures
+** CAP 自慰人生							 :think:life:
+   <2018-08-02 Thu>
+   人要打败欲望，尊从内心之喜。
+   freedom is all about control.
+   desire过程: -- ask for control.
+               -- be control
+	       -- control
+   if you control is the big thing, you will not care about tiny thing
+   and will let it go.
+** CAP brain 							 :life:think:
+   <2018-08-02 Thu>
+   life is about what is in you brain,brain is like a canvas,life is
+   impact by environment.
+** CAP draw and make it clear 					 :life:think:
+   <2018-08-02 Thu>
+   how to think : draw and make it clear
+** CAP lzh_system 组成部分 					 :lzh_system:
+   <2018-08-02 Thu>
+   我的这个系统分成3个部发:前端显示，后端服务，编辑端。
+   实现记忆曲线，整理，统计，分析功能。
+** CAP SB软件，人脑填坑 			      :tool:think:lzh_system:
+   <2018-08-02 Thu>
+   有一些软件是真的坑，依lai或用起来坑太多。花费很多保贵的时间去debug。
+** CAP 怎么才能坚持 						 :life:think:
+   <2018-08-02 Thu>
+   人能坚持的是什么东西？
+   是你自已彻底想清楚的东西，一定要彻底清楚.
+** MEMO sub_fun传参,参数逗号要有空格          :perl:lzh_system:memo:argument:
+   <2018-08-03 Fri>
+** MEMO perl中hash/array的名字为变量  :perl:data_struc:lzh_system:memo:think:
+   <2018-08-04 Sat>
+   perl中数组或hash的名字为变量，这个方式很方便
+   ${$var}{key} = "dddd";
+** CAP 列出用capture记录每一条的关键字。 		   :think:lzh_system:
+   <2018-08-04 Sat>
+   keyword 和tag 不一样，相当于梳理。
+** CAP perl local global variables 				       :perl:
+   <2018-08-06 Mon>
+   in perl 变量只有两种，不是函数的局部作用域，就是全局作用域。
+   
+   数据格式嵌套，嵌套数组 xxx =[@array],然后用@{xxx}来调用。
+** MEMO python script write down                     :python:memo:lzh_system:
+   <2018-08-06 Mon>
+   python中定义函数。python的变量作用域貌似中有两层。
+   import的功能比较好，类似于perl require。
+   函数必须提前定义，不像perl中可以用&任意位置。
+** MEMO javascript DOM operation                         :js:memo:lzh_system:
+   <2018-08-07 Tue>
+   document.getElementById()
+   document.getElementsByTagName()
+   document.getElementById().getElementsByTagName()
+   .innerText
+** MEMO javascript new Array new FormData                           :js:memo:
+   <2018-08-08 Wed>
+   xhr.send new FormData(document.getElementById('xxx'));
+** MEMO browser auto refresh after html submit from      :js:memo:lzh_system:
+   <2018-08-08 Wed>
+   to avoid this problem if you dont want refresh.you can use xmlhttprequest.
+** MEMO perl 遍历文件夹                                :perl:lzh_system:memo:
+   <2018-08-08 Wed>
+   opendir(DIR , "/sdfa/")
+   @filelist = readdir DIR;
+** CAP adjust division window by short-keys 			      :elisp:
+   <2018-08-10 Fri>
+** MEMO create dict/hash in python                              :memo:python:
+   <2018-08-10 Fri>
+   hash = dict()
+** CAP 活着就是为了克服恐惧 					      :think:
+   <2018-08-10 Fri>
+** CAP 我想我还是怕死的这是我的根本恐惧 			      :think:
+   <2018-08-10 Fri>
+** CAP 未来在于现在                                                   :think:
+未来在于现在，不要害怕不要担心，面对当前错对并且思考，活出自己，释放真
+  我。
+  <2018-09-22 Sat>
+** CAP 努力的目的                                                     :think:
+努力的目的，是为了获取做事情，达到目的的方法，而不是单纯的为了冲，为了
+  加速，那样会很累，一次计划的成功需要多个方法串联起来，每个方法都要了
+  然于心。在操与被操之间来回，心才能定。
+  <2018-09-22 Sat>
+** CAP 自由思考是根本的生产力                                         :think:
+我特别不喜欢压抑的状态，这是我人生信仰之一，相信一切都是可以改变的，除
+  了人本身形成的特性的难改变。
+我内心的急燥来自于小时候，我没有很多自已的时间，功课不是自已的，农村的
+  孩子又要会劳动，总是想要自已的时间，总是珍惜自己的时间。
+人的自由思考本质上来自于空间感，不压抑的情况下，才能达到。怎么创造空间，
+  怎么能不压抑？
+坚持比努力更重要，坚持来自于自己的潜意识，有可以是一种思考的积累。潜意
+  识很重要，潜意识会形成坚持的源泉。
+人如何能不苯死，我拿人生才试出了一些事情的对与错，这是何等珍贵，没有坚
+  持又何来这些实验的成功。
+有一些勇气要留给潜意识，留给内心，如take my time.
+  <2018-09-30 Sun>
+** CAP emacs key
+要专注。
+
+先解决emacs key-binding的问题，列出一个key指导表。
+event分类
+每个事件都有一个事件类型，事件类型用来做key binding。如:按键事件，
+event类型为event value。因些char的事件类型是char。功能键的event类型是
+功能键symbol。对于一个list来说，它的事件类型是list的CAR。所以事件类型
+只包含symbol和char。
+
+两个事件类型一样的话，实际就代表对应的key-binding,代表按这个键会run
+the same command。
+
+keymap是一个数据类型。
+
+keymap为nil的情况下，会抬升这个binding的优先级。但不会替代其它等级下的
+优先级。
+
+meta不算一个key sequences,就是说emacs不会按照keymap的触发顺序来处理
+meta键。而且meta只能配合char不能配合function key。
+  <2019-03-30 Sat>
+

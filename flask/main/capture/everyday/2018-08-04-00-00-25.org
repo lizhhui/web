@@ -1,0 +1,3 @@
+** CAP 列出用capture记录每一条的关键字。 		   :think:lzh_system:
+   <2018-08-04 Sat>
+   keyword 和tag 不一样，相当于梳理。

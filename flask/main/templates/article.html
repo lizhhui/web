@@ -97,20 +97,23 @@
 
     {% include 'header.html' %}
 
-      <div class="container">
-	  <div class="form-group">
-            <form class="form-signin" method="post" id="text_form">
-	      <label for="name">文本框</label>
-	      <textarea class="form-control" rows="8" name="nnn" >{{textcontent}}</textarea>
-	      <input type="password" name="passtext" class="form-control" value="c" placeholder="Password">
-	      <label class="radio-inline"><input type="radio" name="add" value="** CAP " checked="checked" />cap</label>
-	      <label class="radio-inline"><input type="radio" name="add" value="** TODO " />todo</label>
-	      <label class="radio-inline"><input type="radio" name="add" value="** MEMO " />memo</label>
-	      <button class="btn btn-success" type="submit" id="submit-text">OK</button>
-            </form>
-	  </div>
+    <div class="container">
+      <div class="form-group">
+        <form class="form-signin" method="post" id="text_form">
+	  <label for="name">标题</label>
+	  <textarea class="form-control" rows="1" name="text_head" > </textarea>
+	  <label for="name">内容</label>
+	  <textarea class="form-control" rows="8" name="text_body" > </textarea>
+	  <button class="btn btn-success" type="submit" id="submit-text">提交</button>
+        </form>
       </div>
 
+      <p class="text-muted">Today article</p>
+      {% for kk in textcontent %}
+      <li><a href= "{{kk}}"> {{kk}}</a></li>
+      {% endfor %}
+    </div>
+    
 
     <footer class="footer">
       <div class="container">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>you are doing the right things</title>
+    <title>recording </title>
 
     <style type="text/css">
       <!--/*--><![CDATA[/*><!--*/
@@ -93,41 +93,25 @@
     <link href="/static/z_css/navbar-fixed-top.css" rel="stylesheet">
   </head>
   <body>
+
+
     {% include 'header.html' %}
 
-      <div class="container">
-	<div class="col-sm-6">
 
-          <div id="memos">
-	    <h1> Check this out </h1>
-	    <div class="well" id="memo_div">
-	      {% for kk in memo_item %}
-	      <h4> {{kk[1]}} </h4>
-	      <p> {{kk[2]|safe}} </p>
-	      {% endfor %}
-	    </div>
-            <form class="form-signin" method="post" id="form_memo" onsubmit="false">
-	      <button class="btn btn-success" onclick="submit_memo()" type="button" name="ok">OK</button>
-	      <button class="btn btn-success" onclick="show_memo()"   type="button" name="show">Show</button>
-	      <button class="btn btn-success" onclick="fail_memo()"   type="button" name="no">NO</button>
-	      <textarea class="form-control" rows="1" id="memo_chk_sta" name="memo_chk_sta" >empty</textarea>
-            </form>
-	  </div>
-	</div>
-	
+    <div class="container">
+    <div class="col-sm-8">
+      <div class="well">{{textcontent|safe }}</div>
+    </div>
 
-	<div class="col-sm-6">
-
-          <div class="well"><p id="ws_p"> Working ...  </p></div>
-          <form class="form-signin" method="post" id="xx_form">
-            <input type="text" name="username" class="form-control" placeholder="email-phone-name">
-            <input type="password" name="pass" class="form-control" placeholder="Password">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
-          </form>
-          <div class="well"><p id="sv_p"> Working ...  </p></div>
-
-	</div>
-      </div>
+    <div class="col-sm-4">
+      <p class="text-muted">Today article</p>
+      {% for kk in title %}
+      <li><a href= "{{kk}}"> {{kk}}</a></li>
+      {% endfor %}
+    </div>
+    </div>
+    
+    
 
     <footer class="footer">
       <div class="container">

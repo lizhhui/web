@@ -1,0 +1,6 @@
+** CAP AMBA designer
+adcanvas
+platform: Red Hat Enterprise Server 6.7 x86_64
+xerces-c-src_2_5_0.tar.gz  xalan_1.8
+如果图形界面不行，可以用命令行模式，可以多打印出错信息。
+<2018-08-20>

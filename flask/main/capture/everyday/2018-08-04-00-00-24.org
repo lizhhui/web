@@ -1,0 +1,5 @@
+﻿** MEMO perl中hash/array的名字为变量  :perl:data_struc:lzh_system:memo:think:
+   <2018-08-04 Sat>
+   perl中数组或hash的名字为变量，这个方式很方便
+   ${$var}{key} = "dddd";
+****last_time****2020/2/9****stage****0****

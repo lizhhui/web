@@ -1,0 +1,6 @@
+** CANCELED org edit C-cC-k C-cC-r rebinding to TAB	   :elisp:lzh_system:
+  SCHEDULED: <2018-08-16 Thu> 
+  - State "CANCELED"   from "TODO"       [2018-08-17 Fri 14:14] \\
+    can't do that ,it is two different function
+  
+  [[file:~/lzh/Emacs/org/lizhhui.org::*org%20%E7%9A%84%E7%BC%96%E8%BE%91][org 的编辑]]

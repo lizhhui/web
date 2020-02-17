@@ -1,0 +1,2 @@
+** CAP adjust division window by short-keys 			      :elisp:
+   <2018-08-10 Fri>
