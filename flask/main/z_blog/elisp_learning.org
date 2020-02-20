@@ -1,0 +1,3 @@
+这几天在学习elisp，对emacs的认识又深了一步。
+verilog-mode又更新了，比以前更加强大，代码大概15K行。
+希望能够捡起org-capture，用一下todo.

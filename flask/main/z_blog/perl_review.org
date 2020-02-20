@@ -1,0 +1,32 @@
+今天开始着手perl工具的coding.仔细考虑的数据结构问题，想用xml来表示生成
+的coding结构，但发现linux系统自带的perl没有XML::Simple模块。
+
+最终决定用hash列表来做好，将树形结构，转化为扁平的hash表。
+
+Data::Dumper是一个好模块，打印调试自已的数据结构。
+
+* perldoc -m XML::Simple 
+查询是否有这个模块。
+
+* ()=@xx 多个变量一次性赋值
+
+* 条件语句置后写法，if or while.
+
+* 变量，数组，哈希
+
+* my函数作用域
+
+* [-1] 倒数第几个
+
+* $#array 与$size=@array
+
+* 内置函数
+- reverse
+- join/splish
+- push/pop
+- shift/unshift
+- next/last
+
+* $& $` $'与匹配
+
+* perl是变量一定加$,不管什么数据类型，主要通过标号确定。

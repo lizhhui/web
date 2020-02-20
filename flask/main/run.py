@@ -43,6 +43,9 @@ def index():
 def memo():
  if request.method == 'POST' and request.form.get("memo_chk_sta"):
   return back_from_browser(RECORD_BACK)
+ elif request.method == 'POST' and request.form.get("username"):
+  return proc_req_pass()
+  #return "dasfasdf"
  else :
   cap_item, todo_item, memo_item = category_from_dir(EVERYDAY_DIR)
   return render_template('memo.html',memo_item=memo_item)

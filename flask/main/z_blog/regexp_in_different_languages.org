@@ -1,0 +1,26 @@
+* 正则表达式
+|          | shell | perl | elisp                                           | python |
+|----------+-------+------+-------------------------------------------------+--------|
+| 特殊符号 |       |      |                                                 |        |
+| 转义     |       |      | 一般命令中用\即可，但在表达式中\本身要再加一个\ |        |
+|          |       |      |                                                 |        |
+|          |       |      |                                                 |        |
+** perl中匹配即匹配某个字符串，又不匹配某个另一个字符串
+- 第一个方法
+这里面用到了几个概念，有一些是perl或其它语言特有的feature。
+
+如断言(look-ahead look-behind),如非获取匹配，non-capture match。
+: ((?!$string_no).)$string_yes #match string_yes,before it ,not match string_no
+(?!$string_no)是一个断言。
+- 第二个方法比较笨
+用非贪婪模式，先抓取到string_yes前面的东西，再证明前面没有string_no，
+分两步。
+: /(.*?)$string_yes/
+: print "success" if($1 !~ /$string_no/);
+
+* 数据类型
+
+* 控制体
+
+* 特殊feature
+  

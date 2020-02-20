@@ -56,22 +56,24 @@ def proc_req():
 
  
 def proc_req_pass():
- pass_name = request.form.get("pass") 
+ pass_name = request.form.get("username") 
  law_match=re.match(r'lzhlaw-([ads])\ *(.*)',pass_name)
  if(law_match):
   if(law_match.group(1)=="a"):
-   return "add"
+   resu= "add"
+   cmd = "/home/fixer/lzh/group0/bin/law "+"/home/fixer/lzh/lzh.dat -a "+law_match.group(2)
   elif(law_match.group(1)=="d"):
-   return "delete"
+   resu= "delete"
   else:
-   cmd = USERDIR+"group0/bin/law "+USERDIR+"/lzh.dat -s "+law_match.group(2)
+   cmd = "/home/fixer/lzh/group0/bin/law "+"/home/fixer/lzh/lzh.dat -s "+law_match.group(2)
    output=os.popen(cmd)
    resu= output.read()
-   resu= re.sub("\n","",resu)
-   resu= re.sub(".*:","",resu)
-   resu= re.sub("\*\*\*\*.*","",resu)
-   return resu
-  #return "search "
+   resu= re.sub("\n","<br>",resu)
+  return resu
+   #resu= re.sub(".*:","",resu)
+   #resu= re.sub("\*\*\*\*.*","",resu)
+   #return resu
+   #return "search "
  else: 
   #output=os.popen('/home/fixer/lzh/Emacs/test')
   output=os.popen(EMACAS_PUBLISH)
@@ -156,7 +158,8 @@ def get_dir_filelist_and_each_content(dir):
  for filename in os.listdir(dir):
   #filepath= os.path.join(dir,filename.decode('gbk'))
   filepath= dir+filename.decode('utf-8')
-  mtime = time.strftime('%y-%m-%d',time.localtime(os.path.getmtime(filepath)))
+  filepath= filepath.encode('utf-8')
+  mtime = time.strftime('%y-%m-%d',time.localtime(os.path.getmtime(filepath )))
   with open(filepath,'r') as f:
    content = f.read().decode('utf-8').replace("\n",'<br>')
    array_array.append([mtime, filename.decode('utf-8'),content])

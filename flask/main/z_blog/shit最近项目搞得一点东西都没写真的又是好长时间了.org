@@ -1,0 +1,16 @@
+好长时间没写东西了，不管怎样，还是要找到一些好的感觉，去清析，不要在混
+乱中遗忘。
+
+因为最近的事情很多，没能坚持下来写作。
+
+最近学习的东西。
+
+- keep real,keep down.
+- TCP/UDP打洞
+- FIFO
+- emacs cua-mode m-r/m-n
+- parameter in head line
+- 人是stupid and 自大的
+- C++编译问题
+- sed匹配行再处理
+- awk对齐打印

@@ -1,0 +1,54 @@
+face the pain.
+face the rape.
+face the faer.
+people are stupid.
+cofee is always helped.
+work control you ,or you control work.
+how to build a system for yourself.
+man if all about insist and check.
+create reminder and give it to yourself.
+categerise if also a think.
+use englist and adjust it ,it is just common used english ,express it.
+add to todo,quick check dictionary use python
+
+all you need is a alfred input entry
+
+add reminder with tags,how to categerise it.
+
+C/C++
+perl
+bash
+csh
+python
+elisp
+makefile
+js
+verilog
+systemverilog
+
+arguments for program
+print/debug/comments
+lines
+control
+data/variable type
+arguments for function
+subfuctions
+fileio
+regexp
+
+whells:
+flask
+tkinter
+uvm
+
+git
+bootstrap
+n2n
+expect
+httpd
+samba
+ftpd
+
+
+thought+memos+courage
+level+module

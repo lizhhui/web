@@ -1,0 +1,44 @@
+记录一下这次的工作过程
+
+android/ios apk -> kivy ->python-> emacs ide -> elpy
+
+* elpy 安装
+python要求：
+- pip install rope
+- pip install jedi
+- pip install flake8
+- pip install autopep8
+- pip install yapf
+mac下先装pip
+: sudo easy_install pip
+然后.emacs
+: (add-to-list 'package-archives
+:             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+: ;;(elpy-enable)
+emacs 执行
+: M-x package-refresh-contents
+: M-x package-install RET elpy RET
+弄完之后在.emacs.d下面有一个elpa就是所有包的文件jia。
+这个elpa文件jia拷到其它emacs的相同目录下也可以正常使用，
+不用任何设置。
+
+
+* kivy
+两种方式
+- apt-get
+: sudo apt-get install python-kivy
+这中间可能ubuntu官方的source可能连不上，可以替换为阿里的云的source。
+- pip install kivy
+: sudo pip install kivy
+或 安装kivy-detail master 版本，感觉靠谱一点。
+: sudo pip install https://github.com/kivy/kivy/archive/master.zip
+
+
+* buildozer
+安装
+: git clone https://github.com/kivy/buildozer.git
+: cd buildozer
+: sudo python2.7 setup.py install
+android配置
+
+
