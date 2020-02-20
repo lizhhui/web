@@ -29,6 +29,8 @@ def index():
  blog_item = get_dir_filelist_and_each_content(BLOG_DIR)
  all_item = np.concatenate((cap_item , blog_item) ,axis=0)
  item_num = len(all_item)
+ ####################
+ #整理文件的函数
  #split_capture_org()
  #split_everyday_org()
  return render_template('index.html',
@@ -43,9 +45,6 @@ def index():
 def memo():
  if request.method == 'POST' and request.form.get("memo_chk_sta"):
   return back_from_browser(RECORD_BACK)
- elif request.method == 'POST' and request.form.get("username"):
-  return proc_req_pass()
-  #return "dasfasdf"
  else :
   cap_item, todo_item, memo_item = category_from_dir(EVERYDAY_DIR)
   return render_template('memo.html',memo_item=memo_item)

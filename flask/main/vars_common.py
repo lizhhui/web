@@ -1,7 +1,7 @@
 import os
 
-#USERDIR = "/Users/lizhanghui/lzh/"
 USERDIR = "/home/fixer/html/"
+#USERDIR = "/home/fixer/lzh/web/flask/main/"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) 
 APP_STATIC_TXT = os.path.join(APP_ROOT, 'static/txt')
 BLOG_INDEX = os.path.join(APP_ROOT,"static/html/z_blog/index.html")
