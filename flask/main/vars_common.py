@@ -1,10 +1,8 @@
 import os
 
-USERDIR = "/home/fixer/html/"
-#USERDIR = "/home/fixer/lzh/web/flask/main/"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) 
-APP_STATIC_TXT = os.path.join(APP_ROOT, 'static/txt')
-BLOG_INDEX = os.path.join(APP_ROOT,"static/html/z_blog/index.html")
+USERDIR = APP_ROOT+"/"
+
 BLOG_DIR = USERDIR+"z_blog/"
 EMACAS_PUBLISH = USERDIR+'Emacs/emacs_publish.expect'
 CAP_PL = 'cd capture ; ./capture_sort.pl input/capture.org'

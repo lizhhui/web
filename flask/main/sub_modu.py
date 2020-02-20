@@ -86,7 +86,7 @@ def proc_req_record(everyday_file):
  w_pass = request.form.get("passtext")
  w_text = request.form.get("nnn").encode('utf-8') 
  w_add = request.form.get("add")
- time_stamp = "<20"+time.strftime("%y-%m-%d")+">"
+ time_stamp = "<"+time.strftime("%Y-%m-%d")+">"
  if(w_text != ""):
   if(w_pass == " "):
    with open(everyday_file,'w') as f:

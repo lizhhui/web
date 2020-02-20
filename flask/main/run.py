@@ -56,7 +56,7 @@ def memo():
 #############################################
 def capture():
  if request.method == 'POST' and request.form.get("passtext"):
-  everyday_file = EVERYDAY_DIR + time.strftime("%y-%m-%d-%H-%M-%S") + ".org"
+  everyday_file = EVERYDAY_DIR + time.strftime("%Y-%m-%d-%H-%M-%S") + ".org"
   return render_template('capture.html', textcontent=get_dir_filelist_and_each_content(EVERYDAY_DIR), latest_commit_content=proc_req_record(everyday_file))
  else:
    return render_template('capture.html',textcontent=get_dir_filelist_and_each_content(EVERYDAY_DIR), latest_commit_content= "no commit")
