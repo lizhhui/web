@@ -142,7 +142,7 @@ def proc_to_rem_file(to_rem_file) :
 def get_dir_filelist(dir):
  filelist= []
  for filename in os.listdir(dir):
-  filelist.append(filename.decode('gbk'))
+  filelist.append(filename.decode('utf-8'))
  return sorted(filelist,reverse=True)
 
 def get_file_content(filepath):
@@ -155,11 +155,11 @@ def get_dir_filelist_and_each_content(dir):
  array_array =[]
  for filename in os.listdir(dir):
   #filepath= os.path.join(dir,filename.decode('gbk'))
-  filepath= dir+filename.decode('gbk')
+  filepath= dir+filename.decode('utf-8')
   mtime = time.strftime('%y-%m-%d',time.localtime(os.path.getmtime(filepath)))
   with open(filepath,'r') as f:
    content = f.read().decode('utf-8').replace("\n",'<br>')
-   array_array.append([mtime, filename.decode('gbk'),content])
+   array_array.append([mtime, filename.decode('utf-8'),content])
  return sorted(array_array,reverse=True)
 
 def category_from_dir(dir):

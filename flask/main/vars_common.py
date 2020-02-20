@@ -1,11 +1,12 @@
 import os
 
-#USERDIR = "/Users/lizhanghui/lzh/"
-USERDIR = "G:/LZH/windows_workspace/pycharm_prj/"
+USERDIR = "/home/fixer/lzh/web/flask/main/"
+#USERDIR = "G:/LZH/windows_workspace/pycharm_prj/"
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) 
 APP_STATIC_TXT = os.path.join(APP_ROOT, 'static/txt')
 BLOG_INDEX = os.path.join(APP_ROOT,"static/html/z_blog/index.html")
-BLOG_DIR = "G:/LZH/emacs/org/z_blog/"
+#BLOG_DIR = "G:/LZH/emacs/org/z_blog/"
+BLOG_DIR = "/home/fixer/lzh/emacs/org/z_blog/"
 EMACAS_PUBLISH = USERDIR+'Emacs/emacs_publish.expect'
 CAP_PL = 'cd capture ; ./capture_sort.pl input/capture.org'
 EVERYDAY_DIR = USERDIR+"capture/everyday/"
