@@ -187,7 +187,7 @@ def remove_file(filepath):
 
 
 ####################
-# 更新memo的tag
+# 更新memo的时间tag
 ####################
 def update_memo_file(result_back) :
  w_text = request.form.get("memo_chk_sta").encode('utf-8') 

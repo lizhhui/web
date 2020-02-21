@@ -89,8 +89,6 @@
     </style>
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="all" href="/static/z_css/timeline.css">
-    <link href="/static/z_css/navbar-fixed-top.css" rel="stylesheet">
   </head>
   <body>
 
@@ -99,13 +97,29 @@
 
 
     <div class="container">
-    <div class="col-sm-8">
-      <div class="well">{{textcontent|safe }}</div>
+      
+    <div class="col-sm-8" >
+      <h4><br> <br> <br> </h4>
+      <h4>{{title}} </h4>
+      <button type="button" onclick="pull_tag()" class="btn btn-xs btn-primary pull-right ">tag</button>
+      <div class="form-group" id="well_text">
+      {{textcontent|safe }}
+
+      <div class="form-group">
+        <form class="form-signin" method="post" id="text_form">
+	  <textarea class="form-control" rows="8" name="text_body" > </textarea>
+        </form>
+      </div>
+
+      </div>
+      <button type="button" id="edit_button" onclick="edit_text()" class="btn btn-xs btn-primary ">编辑</button>
     </div>
 
     <div class="col-sm-4">
-      <p class="text-muted">Today article</p>
-      {% for kk in title %}
+      <p class="text-muted">Tags</p>
+
+      <p class="text-muted">所有文章</p>
+      {% for kk in filelist %}
       <li><a href= "{{kk}}"> {{kk}}</a></li>
       {% endfor %}
     </div>
@@ -120,7 +134,7 @@
     </footer>
 
     <!-- customize js -->
-    <script src="/static/js/lzh.js"></script> 
+    <script src="/static/js/article.js"></script> 
 
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>

@@ -279,8 +279,4 @@ function pullback_item(title){
     temp.submit();
 }
 
-//----------------------------------
-// tag function
-//----------------------------------
-
 

@@ -82,10 +82,7 @@ def capture():
 @app.route('/article/<html_name>', methods=["GET","POST"])
 #############################################
 def article(html_name):
- if(html_name != 'index'):
-  filepath = ARTICLE + html_name
-  return render_template('article_show.html', textcontent=get_file_content(filepath),title=get_dir_filelist(ARTICLE))
- elif request.method == 'POST' :
+ if request.method == 'POST' and request.form.get("text_head") :
   everyday_file = ARTICLE + time.strftime("%y-%m-%d-%H-%M-%S") + request.form.get("text_head")+".org"
   w_text = request.form.get("text_body").encode('utf-8')
   print everyday_file
@@ -96,6 +93,16 @@ def article(html_name):
    f.write("\n")
    f.close()
   return render_template('article.html', textcontent=get_dir_filelist(ARTICLE))
+
+ elif request.method == 'POST' and request.form.get("edit_text") :
+  return "receve text"
+
+ elif(html_name != 'index'):
+  filepath = ARTICLE + html_name
+  return render_template('article_show.html',
+                         title=html_name,
+                         textcontent=get_file_content(filepath),
+                         filelist=get_dir_filelist(ARTICLE))
  else:
   return render_template('article.html',textcontent=get_dir_filelist(ARTICLE))
 #############################################

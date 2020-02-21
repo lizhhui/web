@@ -158,7 +158,17 @@
 	    </a></li>
 	    {% endfor %}
           </ul> 
-	  
+
+	  <h4><br> <br> </h4>
+	  <h4> 热⻔标签 </h4>
+          <ul class="org-ul">
+	    {% for name in posts_key %}
+	    <li><a href= "article/{{name}}">
+                {{name}}
+	    </a></li>
+	    {% endfor %}
+          </ul> 
+  
 	  <h4> 已删除 </h4>
 	  {% for kk in delete_item %}
 	  <li class="list-group-item " >
