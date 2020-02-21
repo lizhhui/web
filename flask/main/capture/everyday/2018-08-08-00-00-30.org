@@ -1,4 +1,4 @@
 ** MEMO browser auto refresh after html submit from      :js:memo:lzh_system:
    <2018-08-08 Wed>
    to avoid this problem if you dont want refresh.you can use xmlhttprequest.
-****last_time****2020/2/9****stage****0****
+****last_time****2/20/2020****stage****1****

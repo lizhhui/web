@@ -122,11 +122,12 @@ pare.appendChild(up_c);
 
 
 //----------------------------------
-// botton function
+// memo botton function
+//----------------------------------
 
 function submit_memo() {
     if(cur_i== heads_text.length-1) {
-	form_submit();
+	memo_form_submit();
 	cur_i++;
 	if(fail_num.length > 0) {
 	    fgot=fail_num[0];
@@ -187,7 +188,7 @@ function fail_memo() {
 	update_board(cur_i);
     }else if(cur_i == heads_text.length-1) {
 	fail_num.push(cur_i);
-	form_submit();
+	memo_form_submit();
 	//alert(cur_i);
 	++cur_i;
 	fgot = fail_num[0];
@@ -202,7 +203,7 @@ function fail_memo() {
 }
 	
 var exist_fail = false;
-function form_submit(){
+function memo_form_submit(){
     submit_area.innerText="";
     for(var i= 0 ;i <heads_text.length; i++){
 	exist_fail = false;
@@ -224,3 +225,62 @@ function form_submit(){
     xmlhttp.open("POST","/memo/",true);
     xmlhttp.send(formData);
 }
+
+//----------------------------------
+// todo botton function
+//----------------------------------
+
+
+function finish_item(title){
+    //=======================
+    // 同步提交方式,刷新页面
+    var temp = document.createElement("form");
+    temp.action = "/";
+    temp.method = "post";
+    temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "finish";
+    opt.value = title;
+    temp.appendChild(opt);
+    document.body.appendChild(temp);
+    temp.submit();
+    //=======================
+    // 异步提交方式,不刷新页面
+    //alert(title);
+    //var formData = new FormData();
+    //formData.append("finish",title);
+    //xmlhttp.open("POST","/",true);
+    //xmlhttp.send(formData);
+}
+
+function remove_item(title){
+    var temp = document.createElement("form");
+    temp.action = "/";
+    temp.method = "post";
+    temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "remove";
+    opt.value = title;
+    temp.appendChild(opt);
+    document.body.appendChild(temp);
+    temp.submit();
+}
+
+function pullback_item(title){
+    var temp = document.createElement("form");
+    temp.action = "/";
+    temp.method = "post";
+    temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "pullback";
+    opt.value = title;
+    temp.appendChild(opt);
+    document.body.appendChild(temp);
+    temp.submit();
+}
+
+//----------------------------------
+// tag function
+//----------------------------------
+
+

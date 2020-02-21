@@ -1,1 +1,9 @@
-2019-04-15-00-00-29 ubuntu 终端 中文设置 LC_ALL   FORGET ****last_time****2020/2/9****stage****-1****
+2019-04-11-00-00-26 动态绑定   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-10-00-00-33 create dict/hash in python :memo:python:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-08-00-00-31 perl 遍历文件夹 :perl:lzh_system:memo:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-08-00-00-30 browser auto refresh after html submit from :js:memo:lzh_system:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-08-00-00-29 javascript new Array new FormData :js:memo:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-07-00-00-28 javascript DOM operation :js:memo:lzh_system:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-06-00-00-27 python script write down :python:memo:lzh_system:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-04-00-00-24 perl中hash/array的名字为变量 :perl:data_struc:lzh_system:memo:think:   CHECKED ****last_time****2/20/2020****stage****1****
+2018-08-03-00-00-23 sub_fun传参,参数逗号要有空格 :perl:lzh_system:memo:argument:   CHECKED ****last_time****2/20/2020****stage****1****

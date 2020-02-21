@@ -1,5 +1,0 @@
-** DONE how flask post know which button submit	    :python:flask:lzh_system:
-  SCHEDULED: <2018-08-06 Mon> 
-  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:14]
-  button is submit with form,so it must use javascript to take over
-  the submit function.

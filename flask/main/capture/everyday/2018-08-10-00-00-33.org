@@ -1,4 +1,4 @@
 ** MEMO create dict/hash in python                              :memo:python:
    <2018-08-10 Fri>
    hash = dict()
-****last_time****2020/2/9****stage****0****
+****last_time****2/20/2020****stage****1****

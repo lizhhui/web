@@ -3,4 +3,4 @@
    python中定义函数。python的变量作用域貌似中有两层。
    import的功能比较好，类似于perl require。
    函数必须提前定义，不像perl中可以用&任意位置。
-****last_time****2020/2/9****stage****0****
+****last_time****2/20/2020****stage****1****

@@ -5,10 +5,13 @@ import re
 from flask import request
 import os
 import time
+import shutil
 from vars_common import *
 
 
-
+################
+# 已经不用了
+################
 def gen_blog(blog_index_path):
  posts_key=[]
  if(os.path.exists(blog_index_path)):
@@ -25,34 +28,7 @@ def gen_blog(blog_index_path):
     if(kk_match):
      posts_key.append([kk_match.group(1),kk_match.group(2)])
  return posts_key
-
-
-#----------------------------
-#| 1 | word add          |
-#| 2 | word delete       |
-#| 3 | word search       |
-#| 4 | update emacs html |
-#| 5 | tip write         |
-#| 6 | tip append        |
-#| 7 | tip read          |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#|   |                   |
-#----------------------------
-def proc_req():
- if request.method=='POST' and request.form.get("pass") :
-  return 1
- elif request.method=='POST' and request.form.get("passtext") :
-  return 2
- elif request.method=='POST' and request.form.get("memo_chk_sta"):
-  return 3
- else:
-  return 0
+################
 
  
 def proc_req_pass():
@@ -108,38 +84,6 @@ def proc_req_record(everyday_file):
     f.close()
     return re_str
 
-def proc_to_rem_file(to_rem_file) :
- with open(to_rem_file) as f:
-  head=""
-  time=""
-  grp_tmp=[]
-  out_array=[]
-  for kk in  f.read().decode('utf-8').split("\n"):
-   kk_match= re.match(r'\*\*\*\*(.*)',kk)
-   if(kk_match):
-    last_head =head
-    last_time =time
-    head=kk_match.group(1) 
-    temp=head
-
-    kk_match=re.match(r'(\d\d\d\d-\d\d-\d\d)\s*(.*)',temp)
-    time=kk_match.group(1) if(kk_match) else " "
-    head=kk_match.group(2) if(kk_match) else temp
-    #print head
-    content = '<br>'.join(grp_tmp)
-    grp_tmp=[]
-    out_array.append([last_time,last_head,content])
-   else:
-    grp_tmp.append(kk)
-             
-                
- f.close()
- content = '<br>'.join(grp_tmp)
- out_array.append([time,head,content])
- out_array.pop(0)
- new_arr=sorted(out_array ,reverse=True)
- return new_arr
-
 
 def get_dir_filelist(dir):
  filelist= []
@@ -169,15 +113,16 @@ def category_from_dir(dir):
  array_array_cap =[]
  array_array_todo =[]
  array_array_memo =[]
+ array_array_done =[]
  content = []
  cap_in = 0
  todo_in = 0
  memo_in = 0
+ done_in = 0
  #=============================
  # array format 
  #=============================
  # [ [time , head ,  content] ]
- # time �ŵ�һΪ�ˣ����򷽱�
  # return 3 arrays which is cap/todo/memo
  #+++++++++++++++++++++++++++++
  for filename in os.listdir(dir):
@@ -186,16 +131,25 @@ def category_from_dir(dir):
     cap_match= re.match(r'.*\*\*\ CAP\ (.*)',kk)
     todo_match= re.match(r'.*\*\*\ TODO\ (.*)',kk)
     memo_match= re.match(r'.*\*\*\ MEMO\ (.*)',kk)
-    if(cap_match)    :    cap_in =1
-    if(todo_match)   :    todo_in =1
-    if(memo_match)   :    memo_in =1
-
-    if(cap_match)    :    todo_in =0
-    if(cap_match)    :    memo_in =0
-    if(todo_match)   :    cap_in  =0
-    if(todo_match)   :    memo_in =0
-    if(memo_match)   :    cap_in  =0
-    if(memo_match)   :    todo_in =0
+    if(cap_match or todo_match or memo_match ):
+     cap_in =0
+     todo_in =0
+     memo_in =0
+    if(cap_match)    :
+     cap_in =1
+     array_array_cap.append(["","",[]])
+     array_array_cap[-1][0] = filename.replace(".org","")
+     array_array_cap[-1][1] = cap_match.group(1)
+    if(todo_match)   :
+     todo_in =1
+     array_array_todo.append(["","",[]])
+     array_array_todo[-1][0] = filename.replace(".org","")
+     array_array_todo[-1][1] = todo_match.group(1)
+    if(memo_match)   :
+     memo_in =1
+     array_array_memo.append(["","",[]])
+     array_array_memo[-1][0] = filename.replace(".org","")
+     array_array_memo[-1][1] = memo_match.group(1)
 
     time_match = re.match(r'^<(\d{4}-\d{2}-\d{2})>',kk)
     if(cap_match or todo_match or memo_match ):
@@ -203,31 +157,39 @@ def category_from_dir(dir):
     elif(not time_match):
      content.append(kk)
 
-    # initial & head 
-    if(cap_match)   :
-     array_array_cap.append(["","",[]])
-     array_array_cap[-1][1] = cap_match.group(1)
-    if(todo_match)  :
-     array_array_todo.append(["","",[]])
-     array_array_todo[-1][1] = todo_match.group(1)
-    if(memo_match)  :
-     array_array_memo.append(["","",[]])
-     array_array_memo[-1][1] = memo_match.group(1)
-    # time & content
-    if(cap_in)   :
-     array_array_cap[-1][2] ='<br>'.join(content)
-     if(time_match) : array_array_cap[-1][0]  = time_match.group(1)
-    if(todo_in)  :
-     array_array_todo[-1][2] ='<br>'.join(content)
-     if(time_match) : array_array_todo[-1][0] = time_match.group(1)
-    if(memo_in)  :
-     array_array_memo[-1][2] ='<br>'.join(content)
-     #if(time_match) : array_array_memo[-1][0] = time_match.group(1)
-     array_array_memo[-1][0] = filename.replace(".org","")
+    # content
+    if(cap_in)   : array_array_cap[-1][2] ='<br>'.join(content)
+    if(todo_in)  : array_array_todo[-1][2] ='<br>'.join(content)
+    if(memo_in)  : array_array_memo[-1][2] ='<br>'.join(content)
+   f.close()
+
  return sorted(array_array_cap,reverse=True), sorted(array_array_todo,reverse=True), sorted(array_array_memo,reverse=True)
 
 
-def back_from_browser(result_back) :
+def category_to_dir(filepath,which_dir):
+ shutil.move(filepath,which_dir)
+def remove_file(filepath):
+ shutil.move(filepath,which_dir)
+
+# with open(filepath,'r') as f:
+#  content=[]
+#  for kk in f.read().decode('utf-8').split("\n"):
+#   todo_match= re.match(r'.*\*\*\ TODO\ (.*)',kk)
+#   if(todo_match):
+#    content.append("**"+" DONE "+todo_match.group(1))
+#   else:
+#    content.append(kk)
+#  f.close()
+# with open(filepath,'w') as f:
+#  f.write("\n".join(content).encode('utf-8'))
+#  f.close()
+ 
+
+
+####################
+# 更新memo的tag
+####################
+def update_memo_file(result_back) :
  w_text = request.form.get("memo_chk_sta").encode('utf-8') 
  with open(result_back,'w') as f:
   f.write(w_text)
@@ -255,6 +217,9 @@ def back_from_browser(result_back) :
  return "record success!"
 
 
+####################
+# 两个整理函数,不是正常routine中的内容.
+####################
 
 def split_capture_org():
  i = 10

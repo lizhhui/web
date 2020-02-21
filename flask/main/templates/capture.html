@@ -89,8 +89,6 @@
     </style>
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="all" href="/static/z_css/timeline.css">
-    <link href="/static/z_css/navbar-fixed-top.css" rel="stylesheet">
   </head>
   <body>
 
@@ -115,8 +113,8 @@
       <p class="text-muted">Today article</p>
       {% for kk in textcontent %}
       <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading"> {{kk[1]}}        </h4>
-        <p class="list-group-item-text">         {{kk[2]|safe}} </p>
+        <h4 class="list-group-item-heading"> {{kk[1]}}      </h4>
+        <p class="list-group-item-text">     {{kk[2]|safe}} </p>
       </a>
       {% endfor %}
 

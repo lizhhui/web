@@ -25,28 +25,44 @@ from vars_common import *
 @app.route('/' , methods=["GET","POST"])
 #############################################
 def index():
- cap_item, todo_item ,memo_item  = category_from_dir(EVERYDAY_DIR)
+ ####################
+ # todo is committing
+ if request.method == 'POST' and request.form.get("finish"):
+  category_to_dir(EVERYDAY_DIR+request.form.get("finish")+".org",DELETE_DIR)
+ elif request.method == 'POST' and request.form.get("remove"):
+  category_to_dir(DELETE_DIR+request.form.get("remove")+".org",TRASH_DIR)
+ elif request.method == 'POST' and request.form.get("pullback"):
+  category_to_dir(DELETE_DIR+request.form.get("pullback")+".org",EVERYDAY_DIR)
+ ####################
+ # 
+ cap_item, todo_item ,memo_item = category_from_dir(EVERYDAY_DIR)
+ del_cap,del_todo,del_memo = category_from_dir(DELETE_DIR)
  blog_item = get_dir_filelist_and_each_content(BLOG_DIR)
  all_item = np.concatenate((cap_item , blog_item) ,axis=0)
  item_num = len(all_item)
+ #delete_item = np.concatenate((del_cap,del_memo) ,axis=0)
+ delete_item = del_cap
+
  ####################
  #整理文件的函数
  #split_capture_org()
  #split_everyday_org()
  return render_template('index.html',
-                        posts_key =get_dir_filelist(ARTICLE),
-                        item_num = item_num,
-                        todo_item=todo_item,
-                        cap_item = all_item)
+                        posts_key   = get_dir_filelist(ARTICLE),
+                        item_num    = item_num,
+                        todo_item   = todo_item,
+                        finish_item = del_todo,
+                        delete_item = delete_item,
+                        cap_item    = all_item)
 #############################################
 # >>> memo 
 @app.route('/memo/', methods=["GET","POST"])
 #############################################
 def memo():
  if request.method == 'POST' and request.form.get("memo_chk_sta"):
-  return back_from_browser(RECORD_BACK)
+  return update_memo_file(RECORD_BACK)
  else :
-  cap_item, todo_item, memo_item = category_from_dir(EVERYDAY_DIR)
+  _,_, memo_item = category_from_dir(EVERYDAY_DIR)
   return render_template('memo.html',memo_item=memo_item)
 
 

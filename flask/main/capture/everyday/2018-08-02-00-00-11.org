@@ -1,5 +1,0 @@
-** CANCELED tag add elisp fuction 
-  SCHEDULED: <2018-08-02 Thu> 
-  - State "CANCELED"   from "TODO"       [2018-08-17 Fri 14:15] \\
-    no need to do that ,after set org-tag-list is can be done with C-cC-q easily
-  

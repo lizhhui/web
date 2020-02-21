@@ -4,11 +4,20 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 USERDIR = APP_ROOT+"/"
 
 BLOG_DIR = USERDIR+"z_blog/"
-EMACAS_PUBLISH = USERDIR+'Emacs/emacs_publish.expect'
-CAP_PL = 'cd capture ; ./capture_sort.pl input/capture.org'
 EVERYDAY_DIR = USERDIR+"capture/everyday/"
+DELETE_DIR = USERDIR+"capture/delete_item/"
+TRASH_DIR = USERDIR+"capture/trash_item/"
 ARTICLE = USERDIR+"capture/article/"
-REM_FILE= USERDIR+"capture/output/to_rem.html"
-TODO_FILE = USERDIR+"capture/output/task.html"
-CAP_FILE =  USERDIR+"capture/output/cap.html"
-RECORD_BACK= USERDIR+"capture/input/check_status.txt"
+
+
+
+
+
+
+
+
+############
+# repeal things
+#RECORD_BACK= USERDIR+"capture/input/check_status.txt"
+#CAP_PL = 'cd capture ; ./capture_sort.pl input/capture.org'
+#EMACAS_PUBLISH = USERDIR+'Emacs/emacs_publish.expect'

@@ -1,4 +1,0 @@
-** DONE flask add memo capture todo 
-  SCHEDULED: <2018-08-02 Thu> 
-  - State "DONE"       from "TODO"       [2018-08-17 Fri 14:12]
-  
