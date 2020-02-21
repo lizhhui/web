@@ -94,8 +94,12 @@ def article(html_name):
    f.close()
   return render_template('article.html', textcontent=get_dir_filelist(ARTICLE))
 
- elif request.method == 'POST' and request.form.get("edit_text") :
-  return "receve text"
+ elif request.method == 'POST' and request.form.get("text_body") :
+  with open(ARTICLE + html_name,'w') as f:
+   f.write(request.form.get("text_body").encode('utf-8'))
+   f.write("\n")
+   f.close()
+  return render_template('article.html',textcontent=get_dir_filelist(ARTICLE))
 
  elif(html_name != 'index'):
   filepath = ARTICLE + html_name

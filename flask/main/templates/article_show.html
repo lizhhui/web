@@ -102,12 +102,12 @@
       <h4><br> <br> <br> </h4>
       <h4>{{title}} </h4>
       <button type="button" onclick="pull_tag()" class="btn btn-xs btn-primary pull-right ">tag</button>
-      <div class="form-group" id="well_text">
-      {{textcontent|safe }}
+      <div class="form-group" >
+      <p id="well_text"> {{textcontent|safe }} </p>
 
       <div class="form-group">
-        <form class="form-signin" method="post" id="text_form">
-	  <textarea class="form-control" rows="8" name="text_body" > </textarea>
+        <form class="form-signin" method="post" name="text_form">
+	  <textarea class="form-control" rows="0" name="text_body" > </textarea>
         </form>
       </div>
 

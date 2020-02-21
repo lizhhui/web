@@ -1,19 +1,20 @@
 //----------------------------------
 // edit article function
 //----------------------------------
-function edit_text(t){
+var t;
+function edit_text(){
     if(!t){
-	alert(t);
 	var org_text = document.getElementById('well_text').innerText;
 	document.getElementById('well_text').innerText='';
 	var ctext= document.getElementsByName("text_body");
-	ctext.innerText =org_text;
+	ctext[0].innerText =org_text;
     }else {
 	var cform=document.getElementsByTagName("form");
-	cform.submit;
+	cform[0].submit();
 	
     }
 
+    //alert(t);
     t = !t;
     if(t){
 	document.getElementById('edit_button').innerText='提交';
