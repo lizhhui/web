@@ -97,38 +97,27 @@
 
 
     <div class="container ">
+
       <h2> <br> </h2>
-      
-    <div class="col-sm-8" >
-      <h4>{{title}} </h4>
-      <h5>
-	{% for kk in tags %}
-        <span class="label label-default">{{kk}}</span>
+      <div class="col-sm-8" >
+	<h4>{{title}} </h4>
+	{% for kk in filelists %}
+	<li class="list-group-item " >
+	  {{kk}}
+	</li>
 	{% endfor %}
-      </h5>
-      <button type="button" onclick="remove_item('{{title}}','/article/xx')" class="btn btn-xs btn-danger pull-right ">Del</button>
-      <div class="form-group" >
-      <p id="well_text"> {{textcontent|safe }} </p>
-
-      <div class="form-group">
-        <form class="form-signin" method="post" name="text_form">
-        </form>
       </div>
 
+      <div class="col-sm-4">
+	<h3 class="text-muted">所有文章</h3>
+	{% for kk in file_dict.keys() %}
+	<li><a href= "{{kk}}"> {{kk}}</a></li>
+	{% endfor %}
+	<h3 class="text-muted"><br>Tags</h3>
+	{% for kk in tag_dict.keys() %}
+	<li><a href= "{{kk}}"> {{kk}}</a></li>
+	{% endfor %}
       </div>
-      <button type="button" id="edit_button" onclick="edit_text()" class="btn btn-xs btn-primary ">编辑</button>
-    </div>
-
-    <div class="col-sm-4">
-      <h3 class="text-muted">所有文章</h3>
-      {% for kk in file_dict.keys() %}
-      <li><a href= "{{kk}}"> {{kk}}</a></li>
-      {% endfor %}
-      <h3 class="text-muted"><br>Tags</h3>
-      {% for kk in tag_dict.keys() %}
-      <li><a href= "{{kk}}"> {{kk}}</a></li>
-      {% endfor %}
-    </div>
 
     </div>
     

@@ -94,12 +94,25 @@
     {% include 'header.html' %}
 
     <div class="container">
-
-      <div class="col-sm-2">
+      <h1> <br> </h1>
+      <div class="col-sm-3">
 	<h1> all </h1>
+	<ul class="list-group">
 	  {% for kk in memo_item %}
-	  <p> {{kk[0]}} </p>
+	  <h4 class="list-group-item-heading" onclick="show_item({{kk[3]}})" >{{kk[0]}}
+	    <button type="button" onclick="finish_item('{{kk[0]}}','/memo/')" class="btn btn-xs btn-warning ">删除</button>
+	  </h4>
+          <p class="text-muted">{{kk[1]}}</p>
 	  {% endfor %}
+	  <h4><br> 已删除 </h4>
+	  {% for kk in delete_item %}
+	  <li class="list-group-item " >
+	    <button type="button" onclick="pullback_item('{{kk[0]}}','/memo/')" class="btn btn-xs btn-primary ">打回</button>
+	    <button type="button" onclick="remove_item('{{kk[0]}}','/memo/')" class="btn btn-xs btn-danger ">清除</button>
+	    <p class="text-muted">{{kk[1]}} <p>
+	  </li>
+	  {% endfor %} 
+
       </div>
       <div class="col-sm-8">
       <div id="memos">
@@ -107,7 +120,7 @@
 	<div class="well" id="memo_div">
 	  {% for kk in memo_item %}
 	  <h4> {{kk[0]}} {{kk[1]}} </h4>
-	  <p> {{kk[2]|safe}}<br> {{kk[0]}} </p>
+	  <p> {{kk[2]|safe}}<br>{{kk[0]}} </p>
 	  {% endfor %}
 	</div>
         <form class="form-signin" method="post" id="form_memo" onsubmit="false">
@@ -122,8 +135,7 @@
       <h1> sss </h1>
       <form class="form-signin" method="post" id="xx_form">
         <input type="text" name="username" class="form-control" placeholder="email-phone-name">
-        <input type="password" name="pass" class="form-control" placeholder="Password">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" id="submit">Submit</button>
       </form>
 
       <h1> Info board </h1>

@@ -43,12 +43,14 @@ def index():
  #delete_item = np.concatenate((del_cap,del_memo) ,axis=0)
  delete_item = del_cap
 
+ _,tag_dict=extract_tag_from_dir(ARTICLE)
  ####################
  #整理文件的函数
  #split_capture_org()
  #split_everyday_org()
  return render_template('index.html',
-                        posts_key   = get_dir_filelist(ARTICLE),
+                        article_files   = get_dir_filelist(ARTICLE),
+                        article_tags    = tag_dict,
                         item_num    = item_num,
                         todo_item   = todo_item,
                         finish_item = del_todo,
@@ -59,11 +61,28 @@ def index():
 @app.route('/memo/', methods=["GET","POST"])
 #############################################
 def memo():
- if request.method == 'POST' and request.form.get("memo_chk_sta"):
-  return update_memo_file(RECORD_BACK)
- else :
-  _,_, memo_item = category_from_dir(EVERYDAY_DIR)
-  return render_template('memo.html',memo_item=memo_item)
+ # category memo is committing
+ if request.method == 'POST' and request.form.get("finish"):
+  category_to_dir(EVERYDAY_DIR+request.form.get("finish")+".org",DELETE_DIR)
+ elif request.method == 'POST' and request.form.get("remove"):
+  category_to_dir(DELETE_DIR+request.form.get("remove")+".org",TRASH_DIR)
+ elif request.method == 'POST' and request.form.get("pullback"):
+  category_to_dir(DELETE_DIR+request.form.get("pullback")+".org",EVERYDAY_DIR)
+ elif request.method == 'POST' and request.form.get("memo_chk_sta"):
+  update_memo_file(RECORD_BACK)
+ #template
+ _,_, memo_item = category_from_dir(EVERYDAY_DIR)
+ _,_,del_memo = category_from_dir(DELETE_DIR)
+ i=0
+ temp =[]
+ for kk in memo_item:
+  temp.append(["","",[],""])
+  temp[-1][0]=kk[0]
+  temp[-1][1]=kk[1]
+  temp[-1][2]=kk[2]
+  temp[-1][3]=i
+  i=i+1
+ return render_template('memo.html',memo_item=temp,delete_item=del_memo)
 
 
 #############################################
@@ -83,32 +102,52 @@ def capture():
 #############################################
 def article(html_name):
  if request.method == 'POST' and request.form.get("text_head") :
-  everyday_file = ARTICLE + time.strftime("%y-%m-%d-%H-%M-%S") + request.form.get("text_head")+".org"
+  everyday_file = ARTICLE + time.strftime("%Y-%m-%d-%H-%M-%S") + request.form.get("text_head")+".org"
   w_text = request.form.get("text_body").encode('utf-8')
   print everyday_file
   # 对于中文文件名，windows默认都是gbk，为了兼容windows下中文标题，统一用gbk编码文件标题。
-  filename = everyday_file.encode('gbk')
+  filename = everyday_file.encode('utf-8')
   with open(filename , 'w') as f:
    f.write(w_text)
    f.write("\n")
    f.close()
-  return render_template('article.html', textcontent=get_dir_filelist(ARTICLE))
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
+  return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
  elif request.method == 'POST' and request.form.get("text_body") :
   with open(ARTICLE + html_name,'w') as f:
    f.write(request.form.get("text_body").encode('utf-8'))
    f.write("\n")
    f.close()
-  return render_template('article.html',textcontent=get_dir_filelist(ARTICLE))
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
+  return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
- elif(html_name != 'index'):
+ elif request.method == 'POST' and request.form.get("remove") :
+  category_to_dir(ARTICLE+request.form.get("remove"),TRASH_DIR)
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
+  return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
+
+ elif(html_name == 'index'):
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
+  return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
+
+ elif(re.match(r'^\d{4}-\d{2}-\d{2}.*',html_name)): 
   filepath = ARTICLE + html_name
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
   return render_template('article_show.html',
                          title=html_name,
                          textcontent=get_file_content(filepath),
-                         filelist=get_dir_filelist(ARTICLE))
+                         tags = file_dict[html_name],
+                         tag_dict = tag_dict,
+                         file_dict=file_dict)
  else:
-  return render_template('article.html',textcontent=get_dir_filelist(ARTICLE))
+  file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
+  return render_template('article_tag.html',
+                         title="TAG:"+html_name,
+                         filelists=tag_dict[html_name],
+                         tag_dict = tag_dict,
+                         file_dict=file_dict)
+
 #############################################
 # >>> z_blog
 @app.route('/z_blog/<html_name>')

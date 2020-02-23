@@ -273,3 +273,48 @@ def split_everyday_org():
      i=i+1
   f.close()
 
+####################
+# article tag function
+####################
+# 对一个目录下所有文本的tag进行统计,分类。
+# output:
+#-0, 两个字典类型(一个tag包含多少文件，一个文件包含多少tag)
+#-1, 字典定义
+# dict = {key1:val1,key2:val2};
+#-2, 方法
+# 长度: len(dict)键总数
+# 打印：str(dict)
+# 查询有没有键：key in dict
+# 删除key对应的value: pop(key)
+# 返回dict中所有的key:list(dict.keys()) dict.keys()
+# 返回dict中所有的value: dict.values()
+# 将dict转化为list:dict.item()
+# 返key的value: dict.get(key) dict[key]
+# 删除字典项 del dict[key]
+def extract_tag_from_dir(dir):
+ file_dict={}
+ tag_dict={}
+ for filename in os.listdir(dir):
+  with open(dir+filename,'r') as f:
+   tag_line=""
+   for kk in f.read().split("\n"):
+    tag_match=re.match(r'.*\*\*\*\*TAG\*(.*)',kk)
+    if(tag_match): tag_line=tag_match.group(1)
+   f.close()
+   if(tag_line!=""): 
+    tag_list = tag_line.split("*")
+    file_dict[filename.decode('utf-8')] = tag_list
+    for tag in tag_list:
+     tag=re.match(r'\ *(\w*).*',tag).group(1)
+     if(tag_dict.get(tag)) :
+      tag_dict[tag]= tag_dict[tag] +[filename.decode('utf-8')] 
+     else: 
+      tag_dict[tag] = [filename.decode('utf-8')]
+   else:
+     file_dict[filename.decode('utf-8')] = []
+     
+ return file_dict ,tag_dict
+   
+    
+  
+   

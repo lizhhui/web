@@ -177,6 +177,11 @@ function show_memo() {
     }
 }
 
+function show_item(kk) {
+    up_c.innerText = contents_text[kk];
+}
+
+
 var fail_num =[];
 var fgot=0;
 var loop_in_fail=0;
@@ -231,11 +236,11 @@ function memo_form_submit(){
 //----------------------------------
 
 
-function finish_item(title){
+function finish_item(title,addr){
     //=======================
     // 同步提交方式,刷新页面
     var temp = document.createElement("form");
-    temp.action = "/";
+    temp.action = addr;
     temp.method = "post";
     temp.style.display = "none";
     var opt = document.createElement("textarea");
@@ -249,13 +254,13 @@ function finish_item(title){
     //alert(title);
     //var formData = new FormData();
     //formData.append("finish",title);
-    //xmlhttp.open("POST","/",true);
+    //xmlhttp.open("POST",addr ,true);
     //xmlhttp.send(formData);
 }
 
-function remove_item(title){
+function remove_item(title,addr){
     var temp = document.createElement("form");
-    temp.action = "/";
+    temp.action = addr;
     temp.method = "post";
     temp.style.display = "none";
     var opt = document.createElement("textarea");
@@ -266,9 +271,9 @@ function remove_item(title){
     temp.submit();
 }
 
-function pullback_item(title){
+function pullback_item(title,addr){
     var temp = document.createElement("form");
-    temp.action = "/";
+    temp.action = addr;
     temp.method = "post";
     temp.style.display = "none";
     var opt = document.createElement("textarea");

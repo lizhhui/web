@@ -115,7 +115,6 @@
 		    <h4>{{kk[1]}}</h4>
 		    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{kk[0]}}</small></p>
 		    <button type="button" onclick="finish_item('{{kk[0]}}')" class="btn btn-xs btn-danger ">删除</button>
-		    <button type="button" onclick="tag_item('{{kk[0]}}')" class="btn btn-xs btn-primary pull-right">tag</button>
 		  </div>
 		  <div class="tl-body">
 		    <p>{{kk[2] |safe}}</p>
@@ -135,7 +134,7 @@
 	  <h4> TODO </h4>
 	  {% for kk in todo_item %}
 	  <li class="list-group-item " >
-	      <button type="button" onclick="finish_item('{{kk[0]}}')" class="btn btn-xs btn-success">完成</button>
+	      <button type="button" onclick="finish_item('{{kk[0]}}','/')" class="btn btn-xs btn-success">完成</button>
 	    {{kk[1]}}
 	  </li>
 	  {% endfor %} 
@@ -143,8 +142,8 @@
 	  <h4> 已完成 </h4>
 	  {% for kk in finish_item %}
 	  <li class="list-group-item " >
-	    <button type="button" onclick="pullback_item('{{kk[0]}}')" class="btn btn-xs btn-primary ">打回</button>
-	    <button type="button" onclick="remove_item('{{kk[0]}}')" class="btn btn-xs btn-danger ">清除</button>
+	    <button type="button" onclick="pullback_item('{{kk[0]}}','/')" class="btn btn-xs btn-primary ">打回</button>
+	    <button type="button" onclick="remove_item('{{kk[0]}}','/')" class="btn btn-xs btn-danger ">清除</button>
 	    {{kk[1]}}
 	  </li>
 	  {% endfor %} 
@@ -152,7 +151,7 @@
 	  <h4><br> <br> </h4>
 	  <h4> 最新文章 </h4>
           <ul class="org-ul">
-	    {% for name in posts_key %}
+	    {% for name in article_files %}
 	    <li><a href= "article/{{name}}">
                 {{name}}
 	    </a></li>
@@ -162,7 +161,7 @@
 	  <h4><br> <br> </h4>
 	  <h4> 热⻔标签 </h4>
           <ul class="org-ul">
-	    {% for name in posts_key %}
+	    {% for name in article_tags.keys() %}
 	    <li><a href= "article/{{name}}">
                 {{name}}
 	    </a></li>
@@ -172,8 +171,8 @@
 	  <h4> 已删除 </h4>
 	  {% for kk in delete_item %}
 	  <li class="list-group-item " >
-	    <button type="button" onclick="pullback_item('{{kk[0]}}')" class="btn btn-xs btn-primary ">打回</button>
-	    <button type="button" onclick="remove_item('{{kk[0]}}')" class="btn btn-xs btn-danger ">清除</button>
+	    <button type="button" onclick="pullback_item('{{kk[0]}}','/')" class="btn btn-xs btn-primary ">打回</button>
+	    <button type="button" onclick="remove_item('{{kk[0]}}','/')" class="btn btn-xs btn-danger ">清除</button>
 	    {{kk[1]}}
 	  </li>
 	  {% endfor %} 

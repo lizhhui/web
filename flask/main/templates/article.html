@@ -107,10 +107,19 @@
         </form>
       </div>
 
-      <p class="text-muted">Today article</p>
-      {% for kk in textcontent %}
+    <div class="col-sm-4">
+      <h3 class="text-muted">所有文章</h3>
+      {% for kk in file_dict.keys() %}
       <li><a href= "{{kk}}"> {{kk}}</a></li>
       {% endfor %}
+    </div>
+    <div class="col-sm-4">
+      <h3 class="text-muted">Tags</h3>
+      {% for kk in tag_dict.keys() %}
+      <li><a href= "{{kk}}"> {{kk}}</a></li>
+      {% endfor %}
+    </div>
+
     </div>
     
 
