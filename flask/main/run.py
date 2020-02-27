@@ -102,11 +102,11 @@ def capture():
 #############################################
 def article(html_name):
  if request.method == 'POST' and request.form.get("text_head") :
-  everyday_file = ARTICLE + time.strftime("%Y-%m-%d-%H-%M-%S") + request.form.get("text_head")+".org"
+  everyday_file = ARTICLE + time.strftime("%Y-%m-%d-%H-%M-%S") + request.form.get("text_head").encode('utf-8')+".org"
   w_text = request.form.get("text_body").encode('utf-8')
   print everyday_file
   # 对于中文文件名，windows默认都是gbk，为了兼容windows下中文标题，统一用gbk编码文件标题。
-  filename = everyday_file.encode('utf-8')
+  filename = everyday_file
   with open(filename , 'w') as f:
    f.write(w_text)
    f.write("\n")
@@ -115,7 +115,7 @@ def article(html_name):
   return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
  elif request.method == 'POST' and request.form.get("text_body") :
-  with open(ARTICLE + html_name,'w') as f:
+  with open(ARTICLE + html_name.encode('utf-8'),'w') as f:
    f.write(request.form.get("text_body").encode('utf-8'))
    f.write("\n")
    f.close()
@@ -132,7 +132,7 @@ def article(html_name):
   return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
  elif(re.match(r'^\d{4}-\d{2}-\d{2}.*',html_name)): 
-  filepath = ARTICLE + html_name
+  filepath = ARTICLE + html_name.encode('utf-8')
   file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
   return render_template('article_show.html',
                          title=html_name,
