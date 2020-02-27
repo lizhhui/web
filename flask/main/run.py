@@ -70,6 +70,8 @@ def memo():
   category_to_dir(DELETE_DIR+request.form.get("pullback")+".org",EVERYDAY_DIR)
  elif request.method == 'POST' and request.form.get("memo_chk_sta"):
   update_memo_file(RECORD_BACK)
+ elif request.method == 'POST' and request.form.get("username"):
+  return proc_req_pass()
  #template
  _,_, memo_item = category_from_dir(EVERYDAY_DIR)
  _,_,del_memo = category_from_dir(DELETE_DIR)
