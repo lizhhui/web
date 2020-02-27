@@ -125,7 +125,7 @@ def article(html_name):
   return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
  elif request.method == 'POST' and request.form.get("remove") :
-  category_to_dir(ARTICLE+request.form.get("remove"),TRASH_DIR)
+  category_to_dir(ARTICLE+request.form.get("remove").encode('utf-8'),TRASH_DIR)
   file_dict,tag_dict=extract_tag_from_dir(ARTICLE)
   return render_template('article.html',tag_dict = tag_dict,file_dict=file_dict)
 
