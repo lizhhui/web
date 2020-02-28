@@ -52,8 +52,8 @@ def proc_req_pass():
    #return "search "
  else: 
   #output=os.popen('/home/fixer/lzh/Emacs/test')
-  output=os.popen(EMACAS_PUBLISH)
-  resu= output.read()
+  #output=os.popen(EMACAS_PUBLISH)
+  #resu= output.read()
   #return resu #for debug update project
   return "can not see details"
        
