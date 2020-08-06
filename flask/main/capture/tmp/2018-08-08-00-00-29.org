@@ -1,0 +1,4 @@
+** MEMO javascript new Array new FormData                           :js:memo:
+   <2018-08-08 Wed>
+   xhr.send new FormData(document.getElementById('xxx'));
+****last_time****2020/2/8****stage****0****

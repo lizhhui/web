@@ -1,0 +1,5 @@
+** MEMO perl 遍历文件夹                                :perl:lzh_system:memo:
+   <2018-08-08 Wed>
+   opendir(DIR , "/sdfa/")
+   @filelist = readdir DIR;
+****last_time****2020/2/8****stage****0****

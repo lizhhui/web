@@ -1,0 +1,15 @@
+A机器：
+git init
+git add *
+git ci -a -m ""
+
+B机器：
+git clone ssh://user@192.168.1.28/home/user/other_project/ttt
+git pull/push
+
+* 第一次push可能出现的问题
+git push orign master
+
+****TAG*git
+
+

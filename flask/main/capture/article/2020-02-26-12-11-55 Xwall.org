@@ -1,0 +1,28 @@
+* trojan
+一键安装的脚本，依赖 curl 和xz-utils
+bash <(curl -s -L https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh)
+配置文件,主要是改里面的密码
+/usr/src/trojan/server.conf
+改完密码之后，重启服务
+systemctl restart trojan
+
+* ss
+用带**-libev后缀的 pip安装
+主要是配置ip/server-port/密码
+/etc/**-libev/config.json
+改完之后，重启服务
+/etc/init.d/**-libev restart
+
+*rraayy
+systemctl start rrraayy #启动
+systemctl stop rraayy #停止 
+systemctl start nginx #启动 Nginx 
+systemctl stop nginx #停止 Nginx 
+
+伪装的 Web 目录：/home/wwwroot/3DCEList
+rraayy 服务端配置：/etc/rraayy/config.json
+Nginx 目录： /etc/nginx
+证书文件: /data/rraayy.key 和 /data/rraayy.crt
+****TAG*xwall
+
+

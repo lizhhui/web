@@ -205,5 +205,5 @@ def info(dest):
 
 
 if __name__ == '__main__':
- app.run(debug=True)
+ app.run(debug=True,ssl_context=(SSL_DIR+'server.crt', SSL_DIR+'server.key'))
 

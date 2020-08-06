@@ -1,0 +1,18 @@
+* nginx 代理可以选择本地目录或者一个localhost的端口
+root /var/www/html;
+index index.nginx-debian.html ;
+************
+location / {
+proxy_pass 127.0.0.1:8080;
+index index.html;
+}
+
+* nginx 在nginx.conf下http {}块中可以有多个server，这些server对应的是本机端口
+
+* nginx的常用命令及log debug
+/etc/nginx/nginx.conf
+/var/log/nginx/error.log
+systemctl restart nginx
+netstat -ntlp
+
+****TAG*web*nginx

@@ -8,6 +8,7 @@ EVERYDAY_DIR = USERDIR+"capture/everyday/"
 DELETE_DIR = USERDIR+"capture/delete_item/"
 TRASH_DIR = USERDIR+"capture/trash_item/"
 ARTICLE = USERDIR+"capture/article/"
+SSL_DIR = USERDIR+"ssl/"
 
 
 

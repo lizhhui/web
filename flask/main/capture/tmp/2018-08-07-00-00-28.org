@@ -1,0 +1,7 @@
+** MEMO javascript DOM operation                         :js:memo:lzh_system:
+   <2018-08-07 Tue>
+   document.getElementById()
+   document.getElementsByTagName()
+   document.getElementById().getElementsByTagName()
+   .innerText
+****last_time****2020/2/8****stage****0****
