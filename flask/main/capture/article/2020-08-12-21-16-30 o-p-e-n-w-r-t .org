@@ -1,0 +1,13 @@
+opkg update
+opkg install git-http
+python git-pip.py
+pip install flask
+python -m site
+opkg install nginx --nodeps
+telecomadmin nE7jA%5m
+opkg install python3
+opkg install python3-numpy
+opkg install uwsgi-python3-plugin
+opkg install uwsgi
+netstat -ltup
+
