@@ -1,13 +1,21 @@
 opkg update
 opkg install git-http
-python git-pip.py
-pip install flask
-python -m site
-opkg install nginx --nodeps
+
+
 telecomadmin nE7jA%5m
 opkg install python3
+源中加入下一行，以安装numpy：
+https://mirrors.cloud.tencent.com/lede/snapshots/packages/aarch64_generic/packages/
 opkg install python3-numpy
 opkg install uwsgi-python3-plugin
 opkg install uwsgi
 netstat -ltup
+
+++++++++++++++++++++++++
+python git-pip.py
+python -m site
+pip install flask
+opkg install nginx --nodeps
+
+****TAG*xwall*web
 
